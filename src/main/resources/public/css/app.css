@@ -38,3 +38,18 @@ h1.main-title {
   font-family: 'Patua One', cursive;
   background-color:#ececec;
 }
+
+.title-alldogs {
+  color: #e22620;
+  text-align: center;
+}
+
+a.navbar-brand {
+  font-family: 'Slackey', cursive;
+  color: #e22620;
+  font-size: 22px;
+}
+
+ .navbar-brand {
+   color: #e22620;
+ }
