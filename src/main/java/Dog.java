@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.ArrayList;
 import org.sql2o.*;
 
   public class Dog {
@@ -13,7 +14,7 @@ import org.sql2o.*;
     return name;
   }
 
-  public String getProfile_pic(){
+  public String getProfilePic(){
     return profile_pic;
   }
 
@@ -40,7 +41,7 @@ import org.sql2o.*;
       Dog newDog = (Dog) otherDog;
       return this.getId() == newDog.getId() &&
               this.getName().equals(newDog.getName()) &&
-              this.getProfile_pic().equals(newDog.getProfile_pic()) &&
+              this.getProfilePic().equals(newDog.getProfilePic()) &&
               this.getSummary().equals(newDog.getSummary()) &&
               this.getOwnerId() == newDog.getOwnerId();
     }
@@ -120,8 +121,35 @@ import org.sql2o.*;
     }
   }
 
+   public List<Boolean> getInterests(){
+     String sql =  "SELECT swimming, eating, frisbee, running, barking FROM interests WHERE dog_id = :id";
+     try (Connection con = DB.sql2o.open()){
+       return con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeAndFetch(Boolean.class);
+     }
+   }
 
+   public int getMatch(int dog_id){
+     Dog dogFriend = Dog.find(dog_id);
+     int score = 0;
+     for (int i =0; i<this.getInterests().size(); i++){
+       if(this.getInterests().get(i).equals(dogFriend.getInterests().get(i))){
+         score += 1;
+       }
+     }
 
+     String sql = "INSERT INTO match (dog_id, dog_friend_id, interest_score) VALUES (:dog_id, :dog_friend_id, :interest_score)";
+     try (Connection con = DB.sql2o.open()){
+       con.createQuery(sql)
+       .addParameter("dog_id", this.id)
+       .addParameter("dog_friend_id", dog_id)
+       .addParameter("interest_score", score)
+       .executeUpdate();
+     }
+
+     return score;
+   }
 
 
 
