@@ -40,6 +40,22 @@ h1.main-title {
 }
 
 
+.title-alldogs {
+  color: #e22620;
+  text-align: center;
+}
+
+a.navbar-brand {
+  font-family: 'Slackey', cursive;
+  color: #e22620;
+  font-size: 22px;
+}
+
+ .navbar-brand {
+   color: #e22620;
+ }
+
+
 #profile img {
   border: 10px solid #fff;
   border-bottom: 45px solid #fff;

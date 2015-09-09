@@ -1,0 +1,33 @@
+<div class="container-fluid">
+
+    <div class="col-md-12 well">
+    <h1 class="title-alldogs">All Dogs on the Hunt!</h1>
+
+    <div class="row-fluid">
+      #foreach($dog in $dogs)
+
+        <div class="row-fluid">
+          <ul class="thumbnails">
+
+            <li class="col-md-4">
+              <div class="thumbnail">
+                <img src=$dog.getProfile_pic() alt="ALT NAME">
+                <div class="caption">
+                  <h3>Title</h3>
+                  <p>Name: $dog.getName()</p>
+                  <p>Email: $dog.getOwnerId()</p>
+                  <p>Details: $dog.getSummary()</p>
+                  <p align="center">
+                    <a href="/profile/$dog.getId()" class="btn btn-primary btn-block" data-toggle="modal">View More info on $dog.getName()</a>
+                  </p>
+                </div>
+              </div>
+            </li>
+
+
+          </ul>
+        </div><!-- end of row inside loop -->
+        #end
+      </div><!-- end of row outside of loop -->
+    </div>
+</div>
