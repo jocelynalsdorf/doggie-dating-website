@@ -40,8 +40,8 @@ import org.sql2o.*;
       Dog newDog = (Dog) otherDog;
       return this.getId() == newDog.getId() &&
               this.getName().equals(newDog.getName()) &&
-              this.getProfile_pic() == newDog.getProfile_pic() &&
-              this.getSummary() == newDog.getSummary() &&
+              this.getProfile_pic().equals(newDog.getProfile_pic()) &&
+              this.getSummary().equals(newDog.getSummary()) &&
               this.getOwnerId() == newDog.getOwnerId();
     }
   }
@@ -55,13 +55,17 @@ import org.sql2o.*;
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO dogs (name) VALUES (:name)";
+      String sql = "INSERT INTO dogs (name, profile_pic, summary, owner_id) VALUES (:name, :profile_pic, :summary, :owner_id)";
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("name", name)
+        .addParameter("name", this.name)
+        .addParameter("profile_pic", this.profile_pic)
+        .addParameter("summary", this.summary)
+        .addParameter("owner_id", this.owner_id)
         .executeUpdate()
         .getKey();
     }
   }
+
 
   public static Dog find(int id) {
     try(Connection con = DB.sql2o.open()) {
