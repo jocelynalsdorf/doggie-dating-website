@@ -13,11 +13,11 @@ import org.sql2o.*;
     return name;
   }
 
-  public Sting getProfile_pic(){
+  public String getProfile_pic(){
     return profile_pic;
   }
 
-  public Sting getSummary(){
+  public String getSummary(){
     return summary;
   }
 
