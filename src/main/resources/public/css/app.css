@@ -1,0 +1,40 @@
+body {
+font-family: 'Arapey', serif;
+}
+
+h3, h4, h5 {
+font-family: 'Patua One', cursive;
+}
+
+body {
+font-family: 'Arapey', serif;
+}
+
+h1, h2{
+
+  font-family: 'Slackey', cursive;
+}
+
+.navbar-inverse {
+  font-family: 'Arapey', serif;
+}
+ul {
+  list-style: none;
+}
+
+.jumbotron {
+  text-align: center;
+
+
+}
+h1.main-title {
+
+  font-family: 'Slackey', cursive;
+  color: #e22620;
+}
+
+.jumbotron h3 {
+
+  font-family: 'Patua One', cursive;
+  background-color:#ececec;
+}
