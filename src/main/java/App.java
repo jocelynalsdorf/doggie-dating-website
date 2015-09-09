@@ -27,5 +27,5 @@ public class App {
         model.put("template", "templates/profile.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
-}
+    }
 }//end of App
