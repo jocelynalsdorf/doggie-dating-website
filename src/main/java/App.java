@@ -10,4 +10,22 @@ public class App {
     String layout = "templates/layout.vtl";
 
 
+    get("/", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        model.put("template", "templates/home.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+
+      get("/new-account", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        model.put("template", "templates/new-account.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+
+      get("/profile", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        model.put("template", "templates/profile.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+}
 }//end of App
