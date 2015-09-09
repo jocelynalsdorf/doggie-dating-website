@@ -36,4 +36,23 @@ public class DogTest {
       assertTrue(myDog.equals(savedDog));
     }
 
+    @Test
+    public void getOwner_returnCorrectOwner() {
+      Owner myOwner = new Owner("Max", "max@gmail.com", "url");
+      myOwner.save();
+      Dog myDog = new Dog("Bailey", "url", "Bailey likes ice cream", myOwner.getId());
+      myDog.save();
+      assertTrue(myOwner.equals(myDog.getOwner().get(0)));
+    }
+
+    @Test
+    public void delete_deleteDogFromDatabase() {
+      Owner myOwner = new Owner("Max", "max@gmail.com", "url");
+      myOwner.save();
+      Dog myDog = new Dog("Bailey", "url", "Bailey likes ice cream", myOwner.getId());
+      myDog.save();
+      myDog.delete();
+      assertEquals(0, Dog.all().size());
+    }
+
 }

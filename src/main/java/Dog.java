@@ -90,13 +90,13 @@ import org.sql2o.*;
     }
   }
 
-  public List<Owner> getOwners() {
+  public List<Owner> getOwner() {
     try(Connection con = DB.sql2o.open()){
       String sql = "SELECT * FROM owners WHERE id =:owner_id";
-      List<Owner> owners = con.createQuery(sql)
-        .addParameter("owner_id", owner_id)
+      List<Owner> owner = con.createQuery(sql)
+        .addParameter("owner_id", this.owner_id)
         .executeAndFetch(Owner.class);
-        return owners;
+      return owner;
     }
   }
 
