@@ -2,6 +2,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.Rule;
 import java.util.List;
+import java.util.*;
 
 public class DogTest {
 
@@ -54,5 +55,15 @@ public class DogTest {
       myDog.delete();
       assertEquals(0, Dog.all().size());
     }
+
+    @Test
+    public void getInterest_returnsBooleanArray_true() {
+      Dog myDog = new Dog("Bella", "url", "Bella likes fruit", 1);
+      myDog.save();
+      Interest newInterests = new Interest(myDog.getId(), true, true, true, true, true);
+      newInterests.save();
+      assertEquals(true, myDog.getInterests().get(0));
+    }
+
 
 }
