@@ -21,5 +21,19 @@ public class DogTest {
       assertTrue(firstDog.equals(secondDog));
     }
 
-  
+    @Test
+    public void save_saveIntoDatabase_true() {
+      Dog myDog = new Dog("Bella", "url", "Bella likes fruit", 1);
+      myDog.save();
+      assertTrue(Dog.all().get(0).equals(myDog));
+    }
+
+    @Test
+    public void find_findDogInDatabase_true() {
+      Dog myDog = new Dog("Bailey", "url", "Bailey likes ice cream", 1);
+      myDog.save();
+      Dog savedDog = Dog.find(myDog.getId());
+      assertTrue(myDog.equals(savedDog));
+    }
+
 }
