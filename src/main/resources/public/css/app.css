@@ -39,6 +39,7 @@ h1.main-title {
   background-color:#ececec;
 }
 
+
 .title-alldogs {
   color: #e22620;
   text-align: center;
@@ -53,3 +54,31 @@ a.navbar-brand {
  .navbar-brand {
    color: #e22620;
  }
+
+
+#profile img {
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+          box-shadow: 1px 1px 1px 1px #777;
+}
+
+#owner img {
+  border: 5px solid #fff;
+  border-bottom: 22.5px solid #fff;
+          box-shadow: 1px 1px 1px 1px #777;
+}
+
+
+#owner p{
+  padding-right: 10px;
+}
+
+#home_btn{
+ margin-top: 5%;
+ margin-left: 25%;
+}
+
+
+#profile_btn{
+ margin-left: 15%;
+}
