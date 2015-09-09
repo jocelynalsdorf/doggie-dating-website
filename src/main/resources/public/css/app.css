@@ -1,0 +1,57 @@
+.container {
+  margin-top:50px;
+
+}
+h1 {
+  font-size: 65px;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  color:#ffc0d1;
+}
+
+h2 {
+  font-size: 25px;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  color:#eec0ff;
+}
+
+li {
+  list-style: none;
+}
+
+.admin-link,
+.books-link,
+.patron-link {
+  padding: 5px;
+  font-size:24px
+}
+.navbar-default {
+  background-color: #c0ffee;
+}
+
+.navbar-right {
+    float: right!important;
+    margin-right: 10px;
+}
+
+.links {
+  color: #c0ffee;
+  text-align: center;
+  font-size: 15px;
+}
+
+.links a {
+  font-size: 15px;
+}
+
+.btn-primary {
+  background-color: #c0ffee;
+  color: #777;
+  border-color: #c0ffee;
+
+}
+
+.btn-home {
+  margin-top: 5px;
+}
