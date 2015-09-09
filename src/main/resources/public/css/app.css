@@ -1,0 +1,67 @@
+body {
+font-family: 'Arapey', serif;
+}
+
+h3, h4, h5 {
+font-family: 'Patua One', cursive;
+}
+
+body {
+font-family: 'Arapey', serif;
+}
+
+h1, h2{
+
+  font-family: 'Slackey', cursive;
+}
+
+.navbar-inverse {
+  font-family: 'Arapey', serif;
+}
+ul {
+  list-style: none;
+}
+
+.jumbotron {
+  text-align: center;
+
+
+}
+h1.main-title {
+
+  font-family: 'Slackey', cursive;
+  color: #e22620;
+}
+
+.jumbotron h3 {
+
+  font-family: 'Patua One', cursive;
+  background-color:#ececec;
+}
+
+#profile img {
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+          box-shadow: 1px 1px 1px 1px #777;
+}
+
+#owner img {
+  border: 5px solid #fff;
+  border-bottom: 22.5px solid #fff;
+          box-shadow: 1px 1px 1px 1px #777;
+}
+
+
+#owner p{
+  padding-right: 10px;
+}
+
+#home_btn{
+ margin-top: 5%;
+ margin-left: 25%;
+}
+
+
+#profile_btn{
+ margin-left: 15%;
+}
