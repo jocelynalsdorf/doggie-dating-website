@@ -1,8 +1,13 @@
 <div class="row">
   <div class="col-md-3">
     <div id="profile"><img src="http://placehold.it/200x200" alt="Profile" class="img-responsive center-block dog-side-pic">
-      <button type="submit" class="btn btn-primary profile-btn center-block">Connect With Me!</button>
-      <button type="submit" class="btn btn-primary profile-btn center-block">Get Score!</button>
+      <form action="/connect/$dog.getId()" method="post">
+        <button type="submit" class="btn btn-primary profile-btn center-block">Connect With Me!</button>
+      </form>
+      
+      <form action="/get-score/$dog.getId()" method="post">
+        <button type="submit" class="btn btn-primary profile-btn center-block">Get Score!</button>
+      </form>
     </div>
     <hr>
     <div id="owner"><img src="http://placehold.it/100x100" alt="Owner" class="img-responsive center-block">
@@ -36,7 +41,9 @@
         </ul>
         <br>
         <br>
-        <button type="submit" class="btn btn-primary btn-block">Update Your Profile</button>
+        <form action="/update" method="post">
+          <button type="submit" class="btn btn-primary btn-block">Update Your Profile</button>
+        </form>
 
       </div>
       <div class="dog-info col-md-2"></div>
