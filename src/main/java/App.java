@@ -81,7 +81,6 @@ public class App {
         model.put("template", "templates/featured.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
-    }
 
 
 
