@@ -156,3 +156,14 @@ a.navbar-brand {
 .fa-heart {
   color: #7F1212;
 }
+
+.nav-image{
+  float:left;
+  margin-top: 11px;
+  margin-right: 10px;}
+
+.btn-danger {
+  color: #fff;
+  background-color: #CC0C0A;
+  border-color: #CC0C0A;
+}
