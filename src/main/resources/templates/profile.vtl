@@ -6,7 +6,7 @@
       </form>
       
       <form action="/get-score/$dog.getId()" method="post">
-        <button type="submit" class="btn btn-primary profile-btn center-block">Get Score!</button>
+          <button type="submit" data-toggle="modal" data-target="#scoreModal" class="btn btn-primary profile-btn center-block">Get Score!</button>
       </form>
     </div>
     <hr>
@@ -47,6 +47,26 @@
       <div class="dog-info col-md-2"></div>
   </div>
 </div>
+<!-- hidden model for score modal -->
+  <div class="modal fade" id="scoreModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4 class="modal-title">Here is the connect score for you and $dog.getName(): <span class="title-span">$dog.getScore()</span></h4>
+      </div>
+      <div class="modal-body">
+        <p>$owner.getEmail()
+
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- hidden model -->
   <div class="modal fade" id="profileModal">
