@@ -11,12 +11,37 @@ font-family: 'Arapey', serif;
 }
 
 h1, h2{
-
+  color: #7F1212;
   font-family: 'Slackey', cursive;
+}
+.navbar-header {
+  background-color: #FF8A89;
+  border-color: #FF8A89;
+}
+.container-fluid {
+  background-color: #FF8A89;
+  border-color: #FF8A89;
 }
 
 .navbar-inverse {
+  background-color: #FF8A89;
+  border-color: #FF8A89;
   font-family: 'Arapey', serif;
+}
+
+.panel-heading {
+  background-color: #FF8A89;
+}
+
+
+.panel-primary {
+    border-color: #FF8A89;
+}
+
+.panel-primary>.panel-heading {
+    color: #ffffff;
+    background-color:  #FF8A89;
+    border-color:  #FF8A89;
 }
 ul {
   list-style: none;
@@ -30,7 +55,7 @@ ul {
 h1.main-title {
 
   font-family: 'Slackey', cursive;
-  color: #e22620;
+  color: #7F1212;
 }
 
 .jumbotron h3 {
