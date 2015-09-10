@@ -10,7 +10,7 @@ public class App {
     String layout = "templates/layout.vtl";
 
 
-    get("/", (request, response) -> {
+      get("/", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
         model.put("template", "templates/home.vtl");
         return new ModelAndView(model, layout);
@@ -22,7 +22,7 @@ public class App {
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
       
-      get("/new-account", (request, response) -> {
+      post("/new-account", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
         //new Owner
         String name = request.queryParams("ownername");
@@ -37,11 +37,14 @@ public class App {
         Dog newDog = new Dog(dogName, dogSum, dogPic, newOwner.getId());
 
         //get interests
-        Integer interestOne = Integer.parseInt(request.queryParams("group1"));
-        Integer interestTwo = Integer.parseInt(request.queryParams("group2"));
-        Integer interestThree = Integer.parseInt(request.queryParams("group3"));
-        Integer[] newInterests = {interestOne, interestTwo, interestThree};
-        newDog.setInterest(newInterests);
+        String interestOne = request.queryParams("group1");
+        String interestTwo = request.queryParams("group2");
+        String interestThree = request.queryParams("group3");
+        newDog.addInterest(interestOne);
+        newDog.addInterest(interestTwo);
+        newDog.addInterest(interestThree);
+        
+        request.session().attribute("dogId", newDog.getId());
 
         response.redirect("/profile/" +newDog.getId());
         return null;
