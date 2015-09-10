@@ -22,33 +22,33 @@ public class App {
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
-      post("/new-account", (request, response) -> {
-        HashMap<String, Object> model = new HashMap<String, Object>();
-        //new Owner
-        String name = request.queryParams("ownername");
-        String contact = request.queryParams("ownercontact");
-        String ownPic = request.queryParams("owner_pic");
-        Owner newOwner = new Owner(name, contact, ownPic);
-
-        //new Dog
-        String dogName = request.queryParams("doggyname");
-        String dogSum = request.queryParams("summary");
-        String dogPic = request.queryParams("dog_pic");
-        Dog newDog = new Dog(dogName, dogSum, dogPic, newOwner.getId());
-
-        //get interests
-        String interestOne = request.queryParams("group1");
-        String interestTwo = request.queryParams("group2");
-        String interestThree = request.queryParams("group3");
-        newDog.addInterest(interestOne);
-        newDog.addInterest(interestTwo);
-        newDog.addInterest(interestThree);
-
-        request.session().attribute("dogId", newDog.getId());
-
-        response.redirect("/profile/" +newDog.getId());
-        return null;
-      });
+      // post("/new-account", (request, response) -> {
+      //   HashMap<String, Object> model = new HashMap<String, Object>();
+      //   //new Owner
+      //   String name = request.queryParams("ownername");
+      //   String contact = request.queryParams("ownercontact");
+      //   String ownPic = request.queryParams("owner_pic");
+      //   Owner newOwner = new Owner(name, contact, ownPic);
+      //
+      //   //new Dog
+      //   String dogName = request.queryParams("doggyname");
+      //   String dogSum = request.queryParams("summary");
+      //   String dogPic = request.queryParams("dog_pic");
+      //   Dog newDog = new Dog(dogName, dogSum, dogPic, newOwner.getId());
+      //
+      //   //get interests
+      //   String interestOne = request.queryParams("group1");
+      //   String interestTwo = request.queryParams("group2");
+      //   String interestThree = request.queryParams("group3");
+      //   newDog.addInterest(interestOne);
+      //   newDog.addInterest(interestTwo);
+      //   newDog.addInterest(interestThree);
+      //
+      //   request.session().attribute("dogId", newDog.getId());
+      //
+      //   response.redirect("/profile/" +newDog.getId());
+      //   return null;
+      // });
 
       get("/profile/:id", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
@@ -79,19 +79,19 @@ public class App {
         model.put("template", "templates/featured.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
-    }
+
 
 
 
       // may need to use post
-      get("/dogs/:id/delete", (request, response) -> {
-        HashMap<String, Object> model = new HashMap<String, Object>();
-        int dog_id = Integer.parseInt(request.queryParams("id"));
-        Dog myDog = Dog.find(dog_id);
-        myDog.delete();
-        response.redirect("/");
-      return null;
-    });
+    //   get("/dogs/:id/delete", (request, response) -> {
+    //     HashMap<String, Object> model = new HashMap<String, Object>();
+    //     int dog_id = Integer.parseInt(request.queryParams("id"));
+    //     Dog myDog = Dog.find(dog_id);
+    //     myDog.delete();
+    //     response.redirect("/");
+    //   return null;
+    // });
 
   }// end of main
 }//end of App
