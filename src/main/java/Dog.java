@@ -94,12 +94,12 @@ public class Dog {
     }
   }
 
-  public List<Owner> getOwner() {
+  public Owner getOwner() {
     try(Connection con = DB.sql2o.open()){
       String sql = "SELECT * FROM owners WHERE id =:owner_id";
-      List<Owner> owner = con.createQuery(sql)
-        .addParameter("owner_id", this.owner_id)
-        .executeAndFetch(Owner.class);
+      Owner owner = con.createQuery(sql)
+        .addParameter("owner_id", this.getOwnerId())
+        .executeAndFetchFirst(Owner.class);
       return owner;
     }
   }
