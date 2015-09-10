@@ -27,18 +27,16 @@
          <p>
       <h3>Doggy Interests</h3>
       <ul>
-         <li>interest 1</li>
-         <li>interest 2</li>
-         <li>interest 3</li>
+        #foreach($interest in $dog.getInterest())
+        <li>$interest.getName()</li>
+        #end
        </ul>
-       <h3>Current Connections:</h3>
-       <ul>
-          <li>connection 1</li>
-          <li>connection 2</li>
-          <li>connection 3</li>
-          <li>connection 4</li>
-          <li>connection 5</li>
-        </ul>
+      <h3>Current Connections:</h3>
+      <ul>
+        #foreach($friend in $dog.getMatches())
+        <li><a href="/profile/$friend.getId()">$friend.getName()</a></li>
+        #end
+      </ul>
         <br>
         <br>
         <form action="/update" method="post">
