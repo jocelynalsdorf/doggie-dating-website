@@ -54,7 +54,7 @@ public class App {
 
       get("/profile/:id", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
-        int dog_id = Integer.parseInt(request.queryParams("id"));
+        int dog_id = Integer.parseInt(request.params("id"));
         Dog myDog = Dog.find(dog_id);
         model.put("owner", myDog.getOwner());
         model.put("dog", myDog);
