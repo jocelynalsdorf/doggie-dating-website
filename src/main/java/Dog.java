@@ -1,10 +1,13 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.*;
 import org.sql2o.*;
+import org.apache.commons.lang.ArrayUtils;
 
-  public class Dog {
-    private int id, owner_id;
+public class Dog {
+  private int id, owner_id;
   private String name, profile_pic, summary;
+  private Integer[] interests;
 
   public int getId() {
     return id;
@@ -121,13 +124,25 @@ import org.sql2o.*;
     }
   }
 
-
-   public Interest getInterests(){
-     String sql =  "SELECT * FROM interests WHERE dog_id = :id";
+//return array.class or integer.class?
+   public Integer[] getInterests(){
+     String sql =  "SELECT interests FROM dogs WHERE id=:id";
+     List<Integer> myInterests;
      try (Connection con = DB.sql2o.open()){
-       return con.createQuery(sql)
+       myInterests = con.createQuery(sql)
         .addParameter("id", this.id)
-        .executeAndFetchFirst(Interest.class);
+        .executeAndFetch(Integer.class);
+     } return myInterests.toArray(new Integer[myInterests.size()]);
+   }
+
+   public void setInterest(int[] newInterests){
+     String sql = "UPDATE dogs SET interests = array_cat(ARRAY[:interests], ARRAY[:newInterests]) WHERE id =:id";
+     try(Connection con = DB.sql2o.open()) {
+       con.createQuery(sql)
+        .addParameter("interests", this.getInterests())
+        .addParameter("newInterests", newInterests)
+        .addParameter("id", id)
+        .executeUpdate();
      }
    }
 
@@ -144,14 +159,11 @@ import org.sql2o.*;
    public int getScore(int dog_friend_id){
      Dog dogFriend = Dog.find(dog_friend_id);
      int score = 0;
-     Interest thisInterest = this.getInterests();
-     Interest friendInterest = dogFriend.getInterests();
-     Boolean[] thisInterestArray  = thisInterest.toBooleanArray();
-     Boolean[] friendInterestArray  = friendInterest.toBooleanArray();
-
-     for (int i =0; i< thisInterestArray.length; i++){
-       if(thisInterestArray[i].equals(friendInterestArray[i])){
-         score += 1;
+     for (int i : this.getInterests()){
+       for (int j : dogFriend.getInterests()){
+         if (i == j){
+           score += 1;
+         }
        }
      }
 
@@ -196,5 +208,9 @@ import org.sql2o.*;
       return dogs;
      }
    }
+
+
+
+
 
   }//end of class
