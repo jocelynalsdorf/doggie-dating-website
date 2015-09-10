@@ -167,3 +167,11 @@ a.navbar-brand {
   background-color: #CC0C0A;
   border-color: #CC0C0A;
 }
+
+.feature-img {
+  margin-top: 28px;
+}
+
+.bottom-features {
+ margin-bottom: 30px;
+}
