@@ -114,37 +114,38 @@ public class Dog {
     return searchResults;
   }
 
-
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM dogs where id=:id";
       con.createQuery(sql)
         .addParameter("id", id)
         .executeUpdate();
+      String joinsql = "DELETE FROM dogs_interests where dog_id=:id";
+      con.createQuery(joinsql)
+        .addParameter("id", id)
+        .executeUpdate();
     }
   }
 
-//return array.class or integer.class?
-   public Integer[] getInterests(){
-     String sql =  "SELECT interests FROM dogs WHERE id=:id";
-     List<Integer> myInterests;
-     try (Connection con = DB.sql2o.open()){
-       myInterests = con.createQuery(sql)
-        .addParameter("id", this.id)
-        .executeAndFetch(Integer.class);
-     } return myInterests.toArray(new Integer[myInterests.size()]);
-   }
+  public void addInterest(int interest_id) {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "INSERT INTO dogs_interests (dog_id, interest_id) VALUES (:dog_id, :interest_id)";
+    con.createQuery(sql)
+      .addParameter("dog_id", id)
+      .addParameter("interest_id", interest_id)
+      .executeUpdate();
+    }
+  }
 
-   public void setInterest(int[] newInterests){
-     String sql = "UPDATE dogs SET interests = array_cat(ARRAY[:interests], ARRAY[:newInterests]) WHERE id =:id";
-     try(Connection con = DB.sql2o.open()) {
-       con.createQuery(sql)
-        .addParameter("interests", this.getInterests())
-        .addParameter("newInterests", newInterests)
-        .addParameter("id", id)
-        .executeUpdate();
-     }
-   }
+  public List<Interest> getInterest() {
+  try(Connection con = DB.sql2o.open()){
+    String sql = "SELECT interests.* FROM dogs JOIN dogs_interests ON (dogs.id = dogs_interests.dog_id) JOIN interests ON (dogs_interests.interest_id = interests.id) WHERE dogs.id =:id";
+    List<Interest> myInterests = con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetch(Interest.class);
+    return myInterests;
+  }
+}
 
    public void setMatches(int dog_friend_id){
      String sql = "INSERT INTO match (dog_id, dog_friend_id) VALUES (:id, :dog_friend_id)";
@@ -159,9 +160,9 @@ public class Dog {
    public int getScore(int dog_friend_id){
      Dog dogFriend = Dog.find(dog_friend_id);
      int score = 0;
-     for (int i : this.getInterests()){
-       for (int j : dogFriend.getInterests()){
-         if (i == j){
+     for (int i = 0; i< this.getInterest().size(); i++){
+       for (int j= 0; j< dogFriend.getInterest().size(); j++){
+         if (this.getInterest().get(i).equals(dogFriend.getInterest().get(j))){
            score += 1;
          }
        }
