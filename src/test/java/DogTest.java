@@ -57,12 +57,10 @@ public class DogTest {
     }
 
     @Test
-    public void getInterest_returnsBooleanArray_true() {
+    public void getInterest_returnsIntegerArray_true() {
       Dog myDog = new Dog("Bella", "url", "Bella likes fruit", 1);
       myDog.save();
-      Interest myInterests = new Interest(myDog.getId(), true, true, true, true, true);
-      myInterests.save();
-      Interest newInterests = myDog.getInterests();
+      myDog.setInterest([1, 2]);
       assertEquals(myInterests, newInterests);
     }
 
@@ -70,14 +68,11 @@ public class DogTest {
     public void getScore_returnCorrectScore(){
       Dog firstDog = new Dog("Bella", "url", "Bella likes fruit", 1);
       firstDog.save();
+      firstDog.setInterest([1, 2]);
       Dog secondDog = new Dog("Bob", "url", "Bob likes ice cream", 2);
       secondDog.save();
-      Interest firstInterests = new Interest(firstDog.getId(), false, true, true, true, true);
-      firstInterests.save();
-      Interest secondInterests = new Interest(secondDog.getId(), false, true, true, true, true);
-      secondInterests.save();
-      firstDog.setMatches(secondDog.getId());
-      assertEquals(5, firstDog.getScore(secondDog.getId()));
+      secondDog.setInterest([2, 3]);
+      assertEquals(1, firstDog.getScore(secondDog.getId()));
     }
 
     @Test

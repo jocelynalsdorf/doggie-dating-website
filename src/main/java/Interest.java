@@ -4,48 +4,18 @@ import org.sql2o.*;
 
   public class Interest {
     private int id;
-    private int dog_id;
-    private Boolean swimming;
-    private Boolean eating;
-    private Boolean frisbee;
-    private Boolean running;
-    private Boolean barking;
+    private String name;
 
     public int getId() {
       return id;
     }
 
-    public int getDogId() {
-      return dog_id;
+    public String getName() {
+      return name;
     }
 
-    public Boolean getSwimming() {
-      return swimming;
-    }
-
-    public Boolean getEating() {
-      return eating;
-    }
-
-    public Boolean getFrisbee() {
-      return frisbee;
-    }
-
-    public Boolean getRunning() {
-      return running;
-    }
-
-    public Boolean getBarking() {
-      return barking;
-    }
-
-    public Interest(int dog_id, Boolean swimming, Boolean eating, Boolean frisbee, Boolean running, Boolean barking) {
-      this.dog_id = dog_id;
-      this.swimming = swimming;
-      this.eating = eating;
-      this.frisbee = frisbee;
-      this.running = running;
-      this.barking = barking;
+    public Interest(String name) {
+      this.name = name;
     }
 
     @Override
@@ -54,13 +24,8 @@ import org.sql2o.*;
         return false;
       } else {
         Interest newInterest = (Interest) otherInterest;
-        return this.getDogId() == newInterest.getDogId() &&
-               this.getSwimming().equals(newInterest.getSwimming()) &&
-               this.getEating().equals(newInterest.getEating()) &&
-               this.getFrisbee().equals(newInterest.getFrisbee()) &&
-               this.getRunning().equals(newInterest.getRunning()) &&
-               this.getBarking().equals(newInterest.getBarking()) &&
-               this.getId() == newInterest.getId();
+        return this.getId() == newInterest.getId() &&
+               this.getName().equals(newInterest.getName());
       }
     }
 
@@ -73,46 +38,32 @@ import org.sql2o.*;
 
     public void save() {
       try(Connection con = DB.sql2o.open()) {
-        String sql = "INSERT INTO interests (dog_id, swimming, eating, frisbee, running, barking) VALUES (:dog_id, :swimming, :eating, :frisbee, :running, :barking)";
+        String sql = "INSERT INTO interests (name) VALUES (:name)";
         this.id = (int) con.createQuery(sql, true)
-          .addParameter("dog_id", this.dog_id)
-          .addParameter("swimming", this.swimming)
-          .addParameter("eating", this.eating)
-          .addParameter("frisbee", this.frisbee)
-          .addParameter("running", this.running)
-          .addParameter("barking", this.barking)
+          .addParameter("name", this.name)
           .executeUpdate()
           .getKey();
       }
     }
 
-    public static Interest find(int dog_id) {
+    public static Interest find(int id) {
       try(Connection con = DB.sql2o.open()) {
-        String sql = "SELECT * FROM interests WHERE dog_id=:dog_id";
+        String sql = "SELECT * FROM interests WHERE id=:id";
         Interest interest = con.createQuery(sql)
-          .addParameter("dog_id", dog_id)
+          .addParameter("id", id)
           .executeAndFetchFirst(Interest.class);
         return interest;
       }
     }
 
-    public void update(boolean swimming, boolean eating, boolean frisbee, boolean running, boolean barking) {
+    public void update(String name) {
       try(Connection con = DB.sql2o.open()) {
-        String sql = "UPDATE interests SET swimming=:swimming, eating=:eating, frisbee=:frisbee, running=:running, barking=:barking WHERE dog_id=:dog_id";
+        String sql = "UPDATE interests SET name=:name";
         con.createQuery(sql)
-          .addParameter("swimming", swimming)
-          .addParameter("eating", eating)
-          .addParameter("frisbee", frisbee)
-          .addParameter("running", running)
-          .addParameter("barking", barking)
-          .addParameter("dog_id", dog_id)
+          .addParameter("name", name)
+          .addParameter("id", id)
           .executeUpdate();
       }
-    }
-
-    public Boolean[] toBooleanArray() {
-      Boolean[] booleanArray = {swimming, eating, frisbee, running, barking};
-      return booleanArray;
     }
 
 }//ends class
