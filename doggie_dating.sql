@@ -111,7 +111,8 @@ CREATE TABLE match (
     id integer NOT NULL,
     dog_id integer,
     dog_friend_id integer,
-    interest_score integer
+    interest_score integer,
+    i_like boolean
 );
 
 
@@ -207,6 +208,8 @@ ALTER TABLE ONLY owners ALTER COLUMN id SET DEFAULT nextval('owners_id_seq'::reg
 
 COPY dogs (id, name, profile_pic, summary, owner_id) FROM stdin;
 1	Dave	url	text	1
+2	Nala	url	summary	3
+3	Bebe	url	summary	3
 \.
 
 
@@ -214,7 +217,7 @@ COPY dogs (id, name, profile_pic, summary, owner_id) FROM stdin;
 -- Name: dogs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('dogs_id_seq', 1, true);
+SELECT pg_catalog.setval('dogs_id_seq', 3, true);
 
 
 --
@@ -236,7 +239,11 @@ SELECT pg_catalog.setval('interests_id_seq', 1, false);
 -- Data for Name: match; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
-COPY match (id, dog_id, dog_friend_id, interest_score) FROM stdin;
+COPY match (id, dog_id, dog_friend_id, interest_score, i_like) FROM stdin;
+2	1	3	4	t
+3	2	3	4	t
+1	1	2	3	f
+4	3	2	5	\N
 \.
 
 
@@ -244,7 +251,7 @@ COPY match (id, dog_id, dog_friend_id, interest_score) FROM stdin;
 -- Name: match_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('match_id_seq', 1, false);
+SELECT pg_catalog.setval('match_id_seq', 4, true);
 
 
 --
