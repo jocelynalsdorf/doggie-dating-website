@@ -29,17 +29,19 @@ public class App {
         String contact = request.queryParams("ownercontact");
         String ownPic = request.queryParams("owner_pic");
         Owner newOwner = new Owner(name, contact, ownPic);
+        newOwner.save();
 
         //new Dog
         String dogName = request.queryParams("doggyname");
         String dogSum = request.queryParams("summary");
         String dogPic = request.queryParams("dog_pic");
         Dog newDog = new Dog(dogName, dogSum, dogPic, newOwner.getId());
+        newDog.save();
 
         //get interests
-        String interestOne = request.queryParams("group1");
-        String interestTwo = request.queryParams("group2");
-        String interestThree = request.queryParams("group3");
+        int interestOne = Integer.parseInt(request.queryParams("group1"));
+        int interestTwo = Integer.parseInt(request.queryParams("group2"));
+        int interestThree = Integer.parseInt(request.queryParams("group3"));
         newDog.addInterest(interestOne);
         newDog.addInterest(interestTwo);
         newDog.addInterest(interestThree);
@@ -83,15 +85,15 @@ public class App {
 
 
 
-      // may need to use post
-      get("/dogs/:id/delete", (request, response) -> {
-        HashMap<String, Object> model = new HashMap<String, Object>();
-        int dog_id = Integer.parseInt(request.queryParams("id"));
-        Dog myDog = Dog.find(dog_id);
-        myDog.delete();
-        response.redirect("/");
-      return null;
-    });
+    //  may need to use post
+    //  get("/dogs/:id/delete", (request, response) -> {
+    //    HashMap<String, Object> model = new HashMap<String, Object>();
+    //    int dog_id = Integer.parseInt(request.queryParams("id"));
+    //    Dog myDog = Dog.find(dog_id);
+    //    myDog.delete();
+    //    response.redirect("/");
+    //    return null;
+    // });
 
   }// end of main
 }//end of App
