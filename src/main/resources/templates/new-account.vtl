@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-md-3"><img src="/img/dog_logo_web.gif" alt="logo" width="250" height="250"><br><br></div>
+<div class="col-md-3"><img src="/img/dog_logo_web.gif" class="img-responsive center-block" alt="logo" width="250" height="250"><br><br></div>
 
 <div class="col-md-9 #FF8A89">
   <div class="row">
@@ -22,6 +22,14 @@
         </div>
       </div>
 
+
+      <div class="form-group">
+        <label for="dog_pic" class="col-lg-2 control-label"><h5>Doggy Pic URL:</h5></label>
+        <div class="col-lg-10">
+          <input id="dog_pic" type="text" name="dog_pic" class="form-control" placeholder="http://www.nameofurl.com" required>
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="ownername" class="col-lg-2 control-label"><h5>Owner Name:</h5></label>
         <div class="col-lg-10">
@@ -37,23 +45,35 @@
       </div>
 
       <div class="form-group">
-      <label for="select1" class="col-lg-2 control-label"><h5>Select Interest 1</h5></label>
-      <div class="col-lg-10">
-        <select class="form-control" id="select1">
-        <option value="interest 1">Interest 1</option>
-        <option value="interest 2">Interest 2</option>
-        <option value="interest 3">Interest 3</option>
-        </select>
+        <label for="owner_pic" class="col-lg-2 control-label"><h5>Owner Pic URL:</h5></label>
+        <div class="col-lg-10">
+          <input id="owner_pic" type="text" name="owner_pic" class="form-control" placeholder="http://www.nameofurl.com"required>
+        </div>
       </div>
+
+      <div class="form-group">
+        <label for="select1" class="col-lg-2 control-label"><h5>Select Interest 1</h5></label>
+        <div class="col-lg-10">
+          <select class="form-control" id="select1" name="group1">
+          <option value="1">Swimming</option>
+          <option value="2">Eating</option>
+          <option value="3">Frisbee</option>
+          <option value="4">Running</option>
+          <option value="5">Barking</option>
+          </select>
+        </div>
       </div>
     <br>
+
     <div class="form-group">
     <label for="select2" class="col-lg-2 control-label"><h5>Select Interest 2</h5></label>
     <div class="col-lg-10">
-      <select class="form-control" id="select2">
-      <option value="interest 1">Interest 1</option>
-      <option value="interest 2">Interest 2</option>
-      <option value="interest 3">Interest 3</option>
+      <select class="form-control" id="select2" name="group2">
+        <option value="1">Swimming</option>
+        <option value="2">Eating</option>
+        <option value="3">Frisbee</option>
+        <option value="4">Running</option>
+        <option value="5">Barking</option>
       </select>
     </div>
     </div>
@@ -61,10 +81,12 @@
     <div class="form-group">
     <label for="select3" class="col-lg-2 control-label"><h5>Select Interest 3</h5></label>
     <div class="col-lg-10">
-      <select class="form-control" id="select3">
-      <option value="interest 1">Interest 1</option>
-      <option value="interest 2">Interest 2</option>
-      <option value="interest 3">Interest 3</option>
+      <select class="form-control" id="select3" name="group2">
+        <option value="1">Swimming</option>
+        <option value="2">Eating</option>
+        <option value="3">Frisbee</option>
+        <option value="4">Running</option>
+        <option value="5">Barking</option>
       </select>
     </div>
     </div>
