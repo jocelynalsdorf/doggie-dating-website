@@ -4,6 +4,7 @@ font-family: 'Arapey', serif;
 
 h3, h4, h5 {
 font-family: 'Patua One', cursive;
+color: #7F1212;
 }
 
 body {
@@ -33,7 +34,11 @@ h1, h2{
   background-color: #FF8A89;
 }
 
+.btn-primary {
+  background-color: #FF8A89;
+  border-color: #FF8A89;
 
+}
 .panel-primary {
     border-color: #FF8A89;
 }
