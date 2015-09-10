@@ -67,16 +67,48 @@ public class DogTest {
     }
 
     @Test
-    public void getMatch_returnCorrectScore(){
+    public void getScore_returnCorrectScore(){
       Dog firstDog = new Dog("Bella", "url", "Bella likes fruit", 1);
       firstDog.save();
       Dog secondDog = new Dog("Bob", "url", "Bob likes ice cream", 2);
       secondDog.save();
-      Interest firstInterests = new Interest(firstDog.getId(), true, true, true, true, true);
+      Interest firstInterests = new Interest(firstDog.getId(), false, true, true, true, true);
       firstInterests.save();
       Interest secondInterests = new Interest(secondDog.getId(), false, true, true, true, true);
       secondInterests.save();
-      assertEquals(4, firstDog.getMatch(secondDog.getId()));
+      firstDog.setMatches(secondDog.getId());
+      assertEquals(5, firstDog.getScore(secondDog.getId()));
     }
 
-}
+    @Test
+    public void setILike_savesTrueIntoDatabase() {
+      Dog firstDog = new Dog("Bumble", "eee", "eeeeee", 1);
+      firstDog.save();
+      Dog secondDog = new Dog("Mumble", "ooo", "oooo", 1);
+      secondDog.save();
+      firstDog.setMatches(secondDog.getId());
+      firstDog.setILike(secondDog.getId());
+      assertEquals(1, firstDog.getMatches().size());
+    }
+
+
+    @Test
+    public void getMatches_returnsAllDogMatches() {
+      Dog jocelyn = new Dog("Jesse", "url", "Cute cockerspaniel", 1);
+      jocelyn.save();
+      Dog yvonne = new Dog("elephant", "url", "actually a hamster", 1);
+      yvonne.save();
+      Dog morgan = new Dog("Nina", "url", "old but still adorable", 1);
+      morgan.save();
+      Dog teresa = new Dog("goon crowley", "url", "actually a cat", 1);
+      teresa.save();
+      yvonne.setMatches(jocelyn.getId());
+      yvonne.setMatches(morgan.getId());
+      yvonne.setMatches(teresa.getId());
+      yvonne.setILike(jocelyn.getId());
+      yvonne.setIDislike(morgan.getId());
+      yvonne.setILike(teresa.getId());
+
+      assertEquals(2, yvonne.getMatches().size());
+    }
+  }//end of class

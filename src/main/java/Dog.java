@@ -131,8 +131,18 @@ import org.sql2o.*;
      }
    }
 
-   public int getMatch(int dog_id){
-     Dog dogFriend = Dog.find(dog_id);
+   public void setMatches(int dog_friend_id){
+     String sql = "INSERT INTO match (dog_id, dog_friend_id) VALUES (:id, :dog_friend_id)";
+     try (Connection con = DB.sql2o.open()){
+       con.createQuery(sql)
+        .addParameter("id", this.getId())
+        .addParameter("dog_friend_id", dog_friend_id)
+        .executeUpdate();
+     }
+   }
+
+   public int getScore(int dog_friend_id){
+     Dog dogFriend = Dog.find(dog_friend_id);
      int score = 0;
      Interest thisInterest = this.getInterests();
      Interest friendInterest = dogFriend.getInterests();
@@ -145,19 +155,46 @@ import org.sql2o.*;
        }
      }
 
-     String sql = "INSERT INTO match (dog_id, dog_friend_id, interest_score) VALUES (:dog_id, :dog_friend_id, :interest_score)";
+     String sql = "UPDATE match SET interest_score = :score WHERE dog_id = :id AND dog_friend_id = :dog_friend_id";
      try (Connection con = DB.sql2o.open()){
        con.createQuery(sql)
-       .addParameter("dog_id", this.id)
-       .addParameter("dog_friend_id", dog_id)
-       .addParameter("interest_score", score)
+       .addParameter("id", this.getId())
+       .addParameter("dog_friend_id", dog_friend_id)
+       .addParameter("score", score)
        .executeUpdate();
      }
-
      return score;
    }
 
+   public void setILike(int dog_friend_id) {
+     String sql = "UPDATE match SET i_like=true WHERE dog_friend_id=:dog_friend_id AND dog_id=:id";
+     try(Connection con = DB.sql2o.open()) {
+       con.createQuery(sql)
+        .addParameter("dog_friend_id", dog_friend_id)
+        .addParameter("id", id)
+        .executeUpdate();
+     }
+   }
+
+   public void setIDislike(int dog_friend_id) {
+     try(Connection con = DB.sql2o.open()) {
+       String sql = "UPDATE match SET i_like=false WHERE dog_friend_id=:dog_friend_id AND dog_id=:id";
+       con.createQuery(sql)
+        .addParameter("dog_friend_id", dog_friend_id)
+        .addParameter("id", id)
+        .executeUpdate();
+     }
+   }
 
 
+   public List<Dog> getMatches(){
+     String sql = "SELECT dogs.* FROM match JOIN dogs ON (dogs.id = match.dog_friend_id) WHERE match.dog_id =:id AND match.i_like = true";
+     try(Connection con = DB.sql2o.open()){
+       List<Dog> dogs = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetch(Dog.class);
+      return dogs;
+     }
+   }
 
   }//end of class
