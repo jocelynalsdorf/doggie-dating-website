@@ -37,18 +37,22 @@ public class App {
         Dog newDog = new Dog(dogName, dogSum, dogPic, newOwner.getId());
 
         //get interests
-        Integer interestOne = request.queryParams(Integer.parseInt("group1"));
-        Integer interestTwo = request.queryParams(Integer.parseInt("group2"));
-        Integer interestThree = request.queryParams(Integer.parseInt("group3"));
-        Integer newInterests[] = new Integer[interestOne, interestTwo, interestThree];
-        newDog.setInterest(newInterests[]);
+        Integer interestOne = Integer.parseInt(request.queryParams("group1"));
+        Integer interestTwo = Integer.parseInt(request.queryParams("group2"));
+        Integer interestThree = Integer.parseInt(request.queryParams("group3"));
+        Integer[] newInterests = {interestOne, interestTwo, interestThree};
+        newDog.setInterest(newInterests);
 
         response.redirect("/profile/" +newDog.getId());
         return null;
       });
 
-      get("/profile", (request, response) -> {
+      get("/profile/:id", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
+        int dog_id = Integer.parseInt(request.queryParams("id"));
+        Dog myDog = Dog.find(dog_id);
+        model.put("owner", myDog.getOwner());
+        model.put("dog", myDog);
         model.put("template", "templates/profile.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
@@ -65,8 +69,17 @@ public class App {
         model.put("template", "templates/edit-profile.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
-    }
 
 
+      // may need to use post
+      get("/dogs/:id/delete", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        int dog_id = Integer.parseInt(request.queryParams("id"));
+        Dog myDog = Dog.find(dog_id);
+        myDog.delete();
+        response.redirect("/");
+      return null;
+    });
 
+  }// end of main
 }//end of App
