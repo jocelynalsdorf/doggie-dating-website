@@ -160,9 +160,9 @@ public class Dog {
    public int getScore(int dog_friend_id){
      Dog dogFriend = Dog.find(dog_friend_id);
      int score = 0;
-     for (int i : this.getInterests()){
-       for (int j : dogFriend.getInterests()){
-         if (i == j){
+     for (int i = 0; i< this.getInterest().size(); i++){
+       for (int j= 0; j< dogFriend.getInterest().size(); j++){
+         if (this.getInterest().get(i).equals(dogFriend.getInterest().get(j))){
            score += 1;
          }
        }
