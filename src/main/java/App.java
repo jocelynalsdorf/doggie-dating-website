@@ -22,6 +22,7 @@ public class App {
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
+
       post("/new-account", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
         //new Owner
@@ -51,6 +52,7 @@ public class App {
         response.redirect("/profile/" +newDog.getId());
         return null;
       });
+
 
       get("/profile/:id", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
@@ -84,6 +86,20 @@ public class App {
 
 
 
+
+
+      // may need to use post
+    //   get("/dogs/:id/delete", (request, response) -> {
+    //     HashMap<String, Object> model = new HashMap<String, Object>();
+    //     int dog_id = Integer.parseInt(request.queryParams("id"));
+    //     Dog myDog = Dog.find(dog_id);
+    //     myDog.delete();
+    //     response.redirect("/");
+    //   return null;
+=======
+
+
+
     //  may need to use post
     //  get("/dogs/:id/delete", (request, response) -> {
     //    HashMap<String, Object> model = new HashMap<String, Object>();
@@ -92,6 +108,7 @@ public class App {
     //    myDog.delete();
     //    response.redirect("/");
     //    return null;
+>>>>>>> d4a316a8cb1a870687c8a90193f5292df261a871
     // });
 
   }// end of main
