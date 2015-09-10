@@ -121,20 +121,26 @@ import org.sql2o.*;
     }
   }
 
-   public List<Boolean> getInterests(){
-     String sql =  "SELECT swimming, eating, frisbee, running, barking FROM interests WHERE dog_id = :id";
+
+   public Interest getInterests(){
+     String sql =  "SELECT * FROM interests WHERE dog_id = :id";
      try (Connection con = DB.sql2o.open()){
        return con.createQuery(sql)
         .addParameter("id", this.id)
-        .executeAndFetch(Boolean.class);
+        .executeAndFetchFirst(Interest.class);
      }
    }
 
    public int getMatch(int dog_id){
      Dog dogFriend = Dog.find(dog_id);
      int score = 0;
-     for (int i =0; i<this.getInterests().size(); i++){
-       if(this.getInterests().get(i).equals(dogFriend.getInterests().get(i))){
+     Interest thisInterest = this.getInterests();
+     Interest friendInterest = dogFriend.getInterests();
+     Boolean[] thisInterestArray  = thisInterest.toBooleanArray();
+     Boolean[] friendInterestArray  = friendInterest.toBooleanArray();
+
+     for (int i =0; i< thisInterestArray.length; i++){
+       if(thisInterestArray[i].equals(friendInterestArray[i])){
          score += 1;
        }
      }

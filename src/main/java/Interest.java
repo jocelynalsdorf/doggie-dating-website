@@ -110,4 +110,9 @@ import org.sql2o.*;
       }
     }
 
+    public Boolean[] toBooleanArray() {
+      Boolean[] booleanArray = {swimming, eating, frisbee, running, barking};
+      return booleanArray;
+    }
+
 }//ends class
