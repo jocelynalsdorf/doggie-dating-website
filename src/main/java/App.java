@@ -21,6 +21,31 @@ public class App {
         model.put("template", "templates/new-account.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
+      
+      get("/new-account", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        //new Owner
+        String name = request.queryParams("ownername");
+        String contact = request.queryParams("ownercontact");
+        String ownPic = request.queryParams("owner_pic");
+        Owner newOwner = new Owner(name, contact, ownPic);
+
+        //new Dog
+        String dogName = request.queryParams("doggyname");
+        String dogSum = request.queryParams("summary");
+        String dogPic = request.queryParams("dog_pic");
+        Dog newDog = new Dog(dogName, dogSum, dogPic, newOwner.getId());
+
+        //get interests
+        Integer interestOne = request.queryParams(Integer.parseInt("group1"));
+        Integer interestTwo = request.queryParams(Integer.parseInt("group2"));
+        Integer interestThree = request.queryParams(Integer.parseInt("group3"));
+        Integer newInterests[] = new Integer[interestOne, interestTwo, interestThree];
+        newDog.setInterest(newInterests[]);
+
+        response.redirect("/profile/" +newDog.getId());
+        return null;
+      });
 
       get("/profile", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
