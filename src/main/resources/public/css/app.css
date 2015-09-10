@@ -12,7 +12,7 @@ font-family: 'Arapey', serif;
 }
 
 h1, h2{
-  color: #7F1212;
+  color: #CC0C0A;
   font-family: 'Slackey', cursive;
 }
 .navbar-header {
@@ -44,23 +44,56 @@ h1, h2{
 }
 
 .panel-primary>.panel-heading {
-    color: #ffffff;
+    color: #CC0C0A;
     background-color:  #FF8A89;
     border-color:  #FF8A89;
 }
+
+.panel-primary .panel-title{
+  color: #CC0C0A;
+}
+
 ul {
   list-style: none;
 }
 
+.jumbotron p {
+  color: #000;
+}
 .jumbotron {
   text-align: center;
-
-
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #FF8A89;
+    opacity: .8;
 }
+
+a {
+    color: #CC0C0A;
+    text-decoration: none;
+}
+
 h1.main-title {
 
   font-family: 'Slackey', cursive;
-  color: #7F1212;
+  color: #CC0C0A;
+}
+
+.btn-primary {
+    color: #CC0C0A;
+    background-color:  #FF8A89;
+    border-color:  #FF8A89;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #CC0C0A;
+}
+
+
+.navbar-inverse .navbar-brand {
+  color: #CC0C0A;
 }
 
 .jumbotron h3 {
