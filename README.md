@@ -1,10 +1,8 @@
 # Doggie Dating Website
 
-=======
 ##### Create a dating profile for your dog, September 11, 2015
 
 #### By Morgan Lutz, Yvonne Peng, Jocilyn Alsdorf, Teresa Fletcher
-=======
 
 ## Description
 
