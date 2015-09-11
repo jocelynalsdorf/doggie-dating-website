@@ -23,6 +23,14 @@ h1, h2{
   background-color: #FF8A89;
   border-color: #FF8A89;
 }
+marquee {
+  font-family: 'Arapey', serif;
+  font-size:24px;
+  color:#CC0C0A;
+}
+.fa-gratipay {
+  color:#FF8A89;
+}
 
 .navbar-inverse {
   background-color: #FF8A89;
