@@ -36,7 +36,23 @@
           <h3 class="panel-title">I Want To See My Account...</h3>
         </div>
         <div class="panel-body">
-          Panel three content--Not sure what goes here
+          <form action="/login" method="post">
+            <div class="form-group">
+              <label for="name" class="col-lg-2 control-label"><h5>Doggy Name:</h5></label>
+              <div class="col-lg-10">
+                <input id="name" type="text" name="name" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="col-lg-2 control-label"><h5>Doggy Password:</h5></label>
+              <div class="col-lg-10">
+                <input id="password" type="password" name="password" class="form-control" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
         </div>
       </div>
 
