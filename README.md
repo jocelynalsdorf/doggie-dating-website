@@ -12,6 +12,8 @@
 
 ## Database Design
 ![Database image](https://raw.githubusercontent.com/morganlutz/doggie-dating-website/master/src/main/resources/public/img/SQL-ScreenShot-2015-09-10.png)
+
+## Site home screenshot 
 ![Screenshot of site] (https://raw.githubusercontent.com/morganlutz/doggie-dating-website/master/src/main/resources/public/img/readme_scrennshot.png)
 ## Setup
 
