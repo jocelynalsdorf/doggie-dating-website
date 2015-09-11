@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-md-3">
     <div id="profile"><img src="http://placehold.it/200x200" alt="Profile" class="img-responsive center-block dog-side-pic">
-      <form action="/connect/$dog.getId()" method="post">
-        <button type="submit" class="btn btn-primary profile-btn center-block">Connect With Me!</button>
-      </form>
-
+      #if($dogId == $dog.getId())
+      #else
+      <a href="/profile/$dogId/connect/$dog.getId()" class="btn btn-primary profile-btn center-block">Connect With Me!</a>
       <button type="submit" data-toggle="modal" data-target="#scoreModal" class="btn btn-primary profile-btn center-block">Get Score!</button>
+      #end
     </div>
     <hr>
     <div id="owner"><img src="http://placehold.it/100x100" alt="Owner" class="img-responsive center-block">
