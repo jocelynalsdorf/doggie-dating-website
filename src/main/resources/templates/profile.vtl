@@ -3,7 +3,7 @@
     <div id="profile"><img src="http://placehold.it/200x200" alt="Profile" class="img-responsive center-block dog-side-pic">
       #if($dogId == $dog.getId())
       #else
-      <a href="/profile/$dogId/connect/$dog.getId()" class="btn btn-primary profile-btn center-block">Connect With Me!</a>
+      <a href="/profile/$dogId/connect/$dog.getId()"><button type="submit" class="btn btn-primary profile-btn center-block">Connect With Me!</button></a>
       <button type="submit" data-toggle="modal" data-target="#scoreModal" class="btn btn-primary profile-btn center-block">Get Score!</button>
       #end
     </div>
@@ -26,16 +26,16 @@
         <li>$interest.getName()</li>
         #end
        </ul>
+       #if($dogId == $dog.getId())
       <h3>Current Connections:</h3>
       <ul>
-        #foreach($friend in $dog.getMatches())
-        <li><a href="/profile/$friend.getId()">$friend.getName()</a></li>
+        #foreach($dog in $dog.getMatches())
+        <li><a href="/profile/$dog.getId()">$dog.getName()</a></li>
         #end
       </ul>
         <br>
         <br>
-        #if($dogId == $dog.getId())
-        <a href="/update"><button type="submit" class="btn btn-primary btn-block">Update Your Profile</button></a>
+        <a href="/update/$dog.getId()" class="btn btn-primary btn-block">Update Your Profile</a>
         #end
       </div>
       <div class="dog-info col-md-2"></div>
