@@ -117,7 +117,7 @@ public class Dog {
   }
 
   public static List<Dog> searchByDog(String dog_name) {
-    String sql = "SELECT * FROM dogs WHERE name LIKE '%" + dog_name + "%'";
+    String sql = "SELECT * FROM dogs WHERE name ILIKE '%" + dog_name + "%'";
     List<Dog> searchResults;
     try (Connection con = DB.sql2o.open()) {
       searchResults = con.createQuery(sql)

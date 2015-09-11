@@ -26,9 +26,17 @@ public class App {
         String name = request.queryParams("name");
         String password = request.queryParams("password");
         Dog myDog = Dog.getDog(name, password);
-        request.session().attribute("dogID", myDog.getId());
+        request.session().attribute("dogId", myDog.getId());
 
         response.redirect("/profile/" +myDog.getId());
+        return null;
+      });
+
+      get("/logout", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        request.session().removeAttribute("dogId");
+
+        response.redirect("/");
         return null;
       });
 
