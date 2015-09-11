@@ -3,12 +3,7 @@
 
 ##### Create a dating profile for your dog, September 11, 2015
 
-#### By Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, Teresa Fletcher
-=======
-##### Create a dating profile for your dog to meet new friends, September 11, 2015
-
-#### By Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, Teresa Fletcher
-
+#### By Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, & Teresa Fletcher
 
 ## Description
 
@@ -49,16 +44,13 @@ $ gradle run
 * Java
 * Spark
 * SQL
+* Bootsrap
+* Apache Velocity
 * Testing with JUnit, FluentLenium, and Gradle
 
 ### Legal
 
-Copyright (c) 2015 Morgan Lutz, Yvonne Peng, Jocilyn Alsdorf, Teresa Fletcher
-* bootstrap
-
-### Legal
-
-Copyright (c) 2015 Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, Teresa Fletcher
+Copyright (c) 2015 Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, & Teresa Fletcher
 
 This software is licensed under the MIT license.
 
