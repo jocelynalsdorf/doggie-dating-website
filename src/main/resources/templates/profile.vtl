@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-3">
-    <div id="profile"><img src="http://placehold.it/200x200" alt="Profile" class="img-responsive center-block dog-side-pic">
+    <div id="profile"><img src="http://loremflickr.com/200/200/dog" alt="Profile" class="img-responsive center-block dog-side-pic">
       #if($dogId == $dog.getId())
       #else
       <a href="/profile/$dogId/connect/$dog.getId()" class="btn btn-primary profile-btn center-block">Connect With Me!</a>
@@ -8,7 +8,7 @@
       #end
     </div>
     <hr>
-    <div id="owner"><img src="http://placehold.it/100x100" alt="Owner" class="img-responsive center-block">
+    <div id="owner"><img src="http://loremflickr.com/150/150/dog" alt="Owner" class="img-responsive center-block">
       <button type="submit" data-toggle="modal" data-target="#profileModal"class="btn btn-primary profile-btn center-block">Contact $owner.getOwnerName()</button>
     </div>
   </div>
