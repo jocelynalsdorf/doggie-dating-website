@@ -6,7 +6,7 @@
 
 ## Description
 
-* Users create, read, update, and delete entries for both dogs and shoe owners.
+* Users create, read, update, and delete entries for both dogs and owners.
 * Many to many relationship exists between dogs ands interests.
 
 ## Database Design
