@@ -9,7 +9,6 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
-
       get("/", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
         model.put("template", "templates/home.vtl");
@@ -58,6 +57,7 @@ public class App {
         HashMap<String, Object> model = new HashMap<String, Object>();
         int dog_id = Integer.parseInt(request.params("id"));
         Dog myDog = Dog.find(dog_id);
+        model.put("dogId", request.session().attribute("dogId"));
         model.put("owner", myDog.getOwner());
         model.put("dog", myDog);
         model.put("template", "templates/profile.vtl");
@@ -67,6 +67,7 @@ public class App {
       get("/all-dogs", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
         model.put("template", "templates/all-dogs.vtl");
+        model.put("dogId", request.session().attribute("dogId"));
         model.put("dogs", Dog.all());
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
@@ -96,20 +97,6 @@ public class App {
     //     myDog.delete();
     //     response.redirect("/");
     //   return null;
-=======
-
-
-
-    //  may need to use post
-    //  get("/dogs/:id/delete", (request, response) -> {
-    //    HashMap<String, Object> model = new HashMap<String, Object>();
-    //    int dog_id = Integer.parseInt(request.queryParams("id"));
-    //    Dog myDog = Dog.find(dog_id);
-    //    myDog.delete();
-    //    response.redirect("/");
-    //    return null;
->>>>>>> d4a316a8cb1a870687c8a90193f5292df261a871
-    // });
 
   }// end of main
 }//end of App
