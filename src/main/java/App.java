@@ -9,34 +9,39 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
+    // before("/profile/:id", (request, response) -> {
+    //   boolean session = request.session().isNew();
+    //   if(session){
+    //     halt(401, "Please log in!!");
+    //   }
+    // });
+    //
+    // before("/update/:id", (request, response) -> {
+    //   String dogId = request.params("id");
+    //   if(dogId=="$dogId"){
+    //     halt(401, "Please log in!!");
+    //   }
+    // });
+
+      get("/update/$dogId", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+        halt(403, "Please log in or create an account!");
+        return null;
+      });
+
+      get("/profile/$dogId", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+        halt(403, "Please log in or create an account!");
+        return null;
+      });
+
       get("/", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
+
         model.put("dogId", request.session().attribute("dogId"));
         model.put("template", "templates/home.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
-
-      // get("/profile", (request, response) -> {
-      //   int dogId = request.session().attribute("dogId");
-      //   response.redirect("/profile/" + dogId);
-      //   return null;
-      // });
-      //
-      // get("/profile/0", (request, response) -> {
-      //   response.redirect("/login");
-      //   return null;
-      // });
-      //
-      // get("/update", (request, response) -> {
-      //   int dogId = request.session().attribute("dogId");
-      //   response.redirect("/update/" + dogId);
-      //   return null;
-      // });
-      //
-      // get("/update/0", (request, response) -> {
-      //   response.redirect("/login");
-      //   return null;
-      // });
 
       get("/login", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
@@ -106,6 +111,7 @@ public class App {
         // };
         Dog myDog = Dog.find(dog_id);
         //int score = myDog.getScore(request.session().attribute("dogId"));
+
         model.put("score", myDog.getScore(request.session().attribute("dogId")));
         model.put("dogId", request.session().attribute("dogId"));
         model.put("owner", myDog.getOwner());
