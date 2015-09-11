@@ -15,6 +15,12 @@ public class App {
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
+      get("/login", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        model.put("template", "templates/login.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+
       post("/login", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
         String name = request.queryParams("name");
