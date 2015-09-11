@@ -15,6 +15,17 @@ public class App {
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
+      post("/login", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        String name = request.queryParams("name");
+        String password = request.queryParams("password");
+        Dog myDog = Dog.getDog(name, password);
+        request.session().attribute("dogID", myDog.getId());
+
+        response.redirect("/profile/" +myDog.getId());
+        return null;
+      });
+
       get("/new-account", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
         model.put("template", "templates/new-account.vtl");
@@ -35,7 +46,8 @@ public class App {
         String dogName = request.queryParams("doggyname");
         String dogSum = request.queryParams("summary");
         String dogPic = request.queryParams("dog_pic");
-        Dog newDog = new Dog(dogName, dogSum, dogPic, newOwner.getId());
+        String dogPW = request.queryParams("password");
+        Dog newDog = new Dog(dogName, dogSum, dogPic, newOwner.getId(), dogPW);
         newDog.save();
 
         //get interests

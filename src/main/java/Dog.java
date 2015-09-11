@@ -7,7 +7,7 @@ import org.apache.commons.lang.ArrayUtils;
 public class Dog {
   private int id, owner_id;
   private String name, profile_pic, summary;
-  private Integer[] interests;
+  private String password;
 
   public int getId() {
     return id;
@@ -29,11 +29,12 @@ public class Dog {
     return owner_id;
   }
 
-  public Dog(String name, String profile_pic, String summary, int owner_id) {
+  public Dog(String name, String profile_pic, String summary, int owner_id, String password) {
     this.name = name;
     this.profile_pic = profile_pic;
     this.summary = summary;
     this.owner_id = owner_id;
+    this.password = password;
   }
 
   @Override
@@ -47,6 +48,17 @@ public class Dog {
               this.getProfilePic().equals(newDog.getProfilePic()) &&
               this.getSummary().equals(newDog.getSummary()) &&
               this.getOwnerId() == newDog.getOwnerId();
+    }
+  }
+
+  public static Dog getDog(String name, String password) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM dogs WHERE name=:name AND password=:password";
+      Dog dog = con.createQuery(sql)
+        .addParameter("name", name)
+        .addParameter("password", password)
+        .executeAndFetchFirst(Dog.class);
+      return dog;
     }
   }
 
