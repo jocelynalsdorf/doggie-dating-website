@@ -14,7 +14,7 @@
           <h3 class="panel-title">I Want To Sign-Up...</h3>
         </div>
         <div class="panel-body">
-          Panel one content-- <a href="/new-account" class="clickit">Sign Up!!</a>
+          <a href="/new-account" class="clickit">Sign Up!!</a>
         </div>
       </div>
     </div><!-- end panel 1 -->
@@ -35,26 +35,36 @@
         <div class="panel-heading">
           <h3 class="panel-title">I Want To See My Account...</h3>
         </div>
-        <div class="panel-body">
-          <form action="/login" method="post">
-            <div class="form-group">
-              <label for="name" class="col-lg-2 control-label"><h5>Doggy Name:</h5></label>
-              <div class="col-lg-10">
-                <input id="name" type="text" name="name" class="form-control" required>
+        #if($dogId)
+          <div class="panel-body">
+            <form action="/logout">
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Logout</button>
               </div>
-            </div>
-
-            <div class="form-group">
-              <label for="password" class="col-lg-2 control-label"><h5>Doggy Password:</h5></label>
-              <div class="col-lg-10">
-                <input id="password" type="password" name="password" class="form-control" required>
+            </form>
+          </div>
+        #else
+          <div class="panel-body">
+            <form action="/login" method="post">
+              <div class="form-group">
+                <label for="name" class="col-lg-2 control-label"><h5>Doggy Name:</h5></label>
+                <div class="col-lg-10">
+                  <input id="name" type="text" name="name" class="form-control" required>
+                </div>
               </div>
-            </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
-        </form>
+              <div class="form-group">
+                <label for="password" class="col-lg-2 control-label"><h5>Doggy Password:</h5></label>
+                <div class="col-lg-10">
+                  <input id="password" type="password" name="password" class="form-control" required>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">Login</button>
+          </form>
         </div>
-      </div>
+      #end
+    </div>
 
     </div><!-- end panel 3 -->
 
