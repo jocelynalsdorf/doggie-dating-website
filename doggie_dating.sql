@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: dogs; Type: TABLE; Schema: public; Owner: morgaface; Tablespace: 
+-- Name: dogs; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
 CREATE TABLE dogs (
@@ -43,10 +43,10 @@ CREATE TABLE dogs (
 );
 
 
-ALTER TABLE dogs OWNER TO morgaface;
+ALTER TABLE dogs OWNER TO "Guest";
 
 --
--- Name: dogs_id_seq; Type: SEQUENCE; Schema: public; Owner: morgaface
+-- Name: dogs_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
 --
 
 CREATE SEQUENCE dogs_id_seq
@@ -57,17 +57,17 @@ CREATE SEQUENCE dogs_id_seq
     CACHE 1;
 
 
-ALTER TABLE dogs_id_seq OWNER TO morgaface;
+ALTER TABLE dogs_id_seq OWNER TO "Guest";
 
 --
--- Name: dogs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: morgaface
+-- Name: dogs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
 --
 
 ALTER SEQUENCE dogs_id_seq OWNED BY dogs.id;
 
 
 --
--- Name: dogs_interests; Type: TABLE; Schema: public; Owner: morgaface; Tablespace: 
+-- Name: dogs_interests; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
 CREATE TABLE dogs_interests (
@@ -77,10 +77,10 @@ CREATE TABLE dogs_interests (
 );
 
 
-ALTER TABLE dogs_interests OWNER TO morgaface;
+ALTER TABLE dogs_interests OWNER TO "Guest";
 
 --
--- Name: dogs_interests_id_seq; Type: SEQUENCE; Schema: public; Owner: morgaface
+-- Name: dogs_interests_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
 --
 
 CREATE SEQUENCE dogs_interests_id_seq
@@ -91,17 +91,17 @@ CREATE SEQUENCE dogs_interests_id_seq
     CACHE 1;
 
 
-ALTER TABLE dogs_interests_id_seq OWNER TO morgaface;
+ALTER TABLE dogs_interests_id_seq OWNER TO "Guest";
 
 --
--- Name: dogs_interests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: morgaface
+-- Name: dogs_interests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
 --
 
 ALTER SEQUENCE dogs_interests_id_seq OWNED BY dogs_interests.id;
 
 
 --
--- Name: interests; Type: TABLE; Schema: public; Owner: morgaface; Tablespace: 
+-- Name: interests; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
 CREATE TABLE interests (
@@ -110,10 +110,10 @@ CREATE TABLE interests (
 );
 
 
-ALTER TABLE interests OWNER TO morgaface;
+ALTER TABLE interests OWNER TO "Guest";
 
 --
--- Name: interests_id_seq; Type: SEQUENCE; Schema: public; Owner: morgaface
+-- Name: interests_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
 --
 
 CREATE SEQUENCE interests_id_seq
@@ -124,17 +124,17 @@ CREATE SEQUENCE interests_id_seq
     CACHE 1;
 
 
-ALTER TABLE interests_id_seq OWNER TO morgaface;
+ALTER TABLE interests_id_seq OWNER TO "Guest";
 
 --
--- Name: interests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: morgaface
+-- Name: interests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
 --
 
 ALTER SEQUENCE interests_id_seq OWNED BY interests.id;
 
 
 --
--- Name: match; Type: TABLE; Schema: public; Owner: morgaface; Tablespace: 
+-- Name: match; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
 CREATE TABLE match (
@@ -146,10 +146,10 @@ CREATE TABLE match (
 );
 
 
-ALTER TABLE match OWNER TO morgaface;
+ALTER TABLE match OWNER TO "Guest";
 
 --
--- Name: match_id_seq; Type: SEQUENCE; Schema: public; Owner: morgaface
+-- Name: match_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
 --
 
 CREATE SEQUENCE match_id_seq
@@ -160,17 +160,17 @@ CREATE SEQUENCE match_id_seq
     CACHE 1;
 
 
-ALTER TABLE match_id_seq OWNER TO morgaface;
+ALTER TABLE match_id_seq OWNER TO "Guest";
 
 --
--- Name: match_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: morgaface
+-- Name: match_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
 --
 
 ALTER SEQUENCE match_id_seq OWNED BY match.id;
 
 
 --
--- Name: owners; Type: TABLE; Schema: public; Owner: morgaface; Tablespace: 
+-- Name: owners; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
 --
 
 CREATE TABLE owners (
@@ -181,10 +181,10 @@ CREATE TABLE owners (
 );
 
 
-ALTER TABLE owners OWNER TO morgaface;
+ALTER TABLE owners OWNER TO "Guest";
 
 --
--- Name: owners_id_seq; Type: SEQUENCE; Schema: public; Owner: morgaface
+-- Name: owners_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
 --
 
 CREATE SEQUENCE owners_id_seq
@@ -195,71 +195,80 @@ CREATE SEQUENCE owners_id_seq
     CACHE 1;
 
 
-ALTER TABLE owners_id_seq OWNER TO morgaface;
+ALTER TABLE owners_id_seq OWNER TO "Guest";
 
 --
--- Name: owners_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: morgaface
+-- Name: owners_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
 --
 
 ALTER SEQUENCE owners_id_seq OWNED BY owners.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: morgaface
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
 --
 
 ALTER TABLE ONLY dogs ALTER COLUMN id SET DEFAULT nextval('dogs_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: morgaface
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
 --
 
 ALTER TABLE ONLY dogs_interests ALTER COLUMN id SET DEFAULT nextval('dogs_interests_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: morgaface
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
 --
 
 ALTER TABLE ONLY interests ALTER COLUMN id SET DEFAULT nextval('interests_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: morgaface
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
 --
 
 ALTER TABLE ONLY match ALTER COLUMN id SET DEFAULT nextval('match_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: morgaface
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
 --
 
 ALTER TABLE ONLY owners ALTER COLUMN id SET DEFAULT nextval('owners_id_seq'::regclass);
 
 
 --
--- Data for Name: dogs; Type: TABLE DATA; Schema: public; Owner: morgaface
+-- Data for Name: dogs; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
 COPY dogs (id, name, profile_pic, summary, owner_id, password) FROM stdin;
-1	Dave	url	text	1	travis
-2	Nala	url	summary	3	travis
-3	Bebe	url	summary	3	travis
-4	lkjgdfklj	jklsjgklsfj	jklfdjgklsjg	2	travis
+11	Koru	http://i.imgur.com/vEQbf9I.jpg	Rescue dog with a great attitude. Loves to eat cat poop. High cute factor	9	1234
+13	Sasha	http://i.imgur.com/kVF5i5o.jpg	Sasha is sassy and likes to chew on ropes	11	1234
+14	Sergio	http://i.imgur.com/SPaeXZV.jpg	Sergio is a bad boy turned good. He is looking for all sorts of new friends, including cats.	12	1234
+15	Bobaque	http://i.imgur.com/ceCPhmZ.jpg	Bobaque knows his way around the street. He likes frisbee 	13	1234
+16	Goon Dog	http://i.imgur.com/gPObsyf.jpg	I am totally a dog!!	14	alko33
+17	Cujo	http://i.imgur.com/PoG2ZBV.jpg	My bark is not worse than my bite.	15	never
+18	Wishbone	http://i.imgur.com/7uIF77r.jpg	I love to read, travel through time and solve mysteries.	16	Book
+19	Frankenweenie	http://i.imgur.com/P8vF1En.jpg	I love all things spooky and long walks at night in the graveyard.	17	spooks
+20	Scooby Doo	http://i.imgur.com/QuCPVEy.jpg	I love eating with my pal Shaggy and solving mysteries with the gang.	18	teresa
+21	Aqua Fina	http://i.imgur.com/SHZPisD.jpg	I love swimming and making goofy faces.	19	swim
+22	Dogald Trump	http://i.imgur.com/dfFnmEc.jpg	I love taking over the world and looking fly in the process.	20	alko33
+23	Nina	http://i.imgur.com/UOBayYa.jpg	I love taking naps!	21	12345
+24	Hero	http://i.imgur.com/tpzn5ND.jpg	I like to chase things.	22	12345
 \.
 
 
 --
--- Name: dogs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: morgaface
+-- Name: dogs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('dogs_id_seq', 10, true);
+SELECT pg_catalog.setval('dogs_id_seq', 24, true);
 
 
 --
--- Data for Name: dogs_interests; Type: TABLE DATA; Schema: public; Owner: morgaface
+-- Data for Name: dogs_interests; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
 COPY dogs_interests (id, dog_id, interest_id) FROM stdin;
@@ -281,18 +290,54 @@ COPY dogs_interests (id, dog_id, interest_id) FROM stdin;
 16	10	3
 17	10	4
 18	10	1
+19	11	2
+20	11	5
+21	11	3
+32	13	5
+33	13	4
+34	13	1
+35	14	5
+36	14	2
+37	14	3
+38	15	2
+39	15	3
+40	15	4
+41	16	2
+42	16	4
+43	16	5
+44	17	2
+45	18	2
+46	18	3
+47	18	5
+48	19	5
+49	19	4
+50	19	2
+51	20	2
+52	20	4
+53	21	1
+54	21	2
+55	21	5
+56	22	5
+57	22	4
+58	22	2
+59	23	3
+60	23	4
+61	23	5
+62	24	2
+63	24	4
+64	24	3
 \.
 
 
 --
--- Name: dogs_interests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: morgaface
+-- Name: dogs_interests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('dogs_interests_id_seq', 18, true);
+SELECT pg_catalog.setval('dogs_interests_id_seq', 64, true);
 
 
 --
--- Data for Name: interests; Type: TABLE DATA; Schema: public; Owner: morgaface
+-- Data for Name: interests; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
 COPY interests (id, name) FROM stdin;
@@ -305,14 +350,14 @@ COPY interests (id, name) FROM stdin;
 
 
 --
--- Name: interests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: morgaface
+-- Name: interests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
 SELECT pg_catalog.setval('interests_id_seq', 5, true);
 
 
 --
--- Data for Name: match; Type: TABLE DATA; Schema: public; Owner: morgaface
+-- Data for Name: match; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
 COPY match (id, dog_id, dog_friend_id, interest_score, i_like) FROM stdin;
@@ -320,18 +365,20 @@ COPY match (id, dog_id, dog_friend_id, interest_score, i_like) FROM stdin;
 3	2	3	4	t
 1	1	2	3	f
 4	3	2	5	\N
+5	11	3	\N	t
+6	16	21	\N	t
 \.
 
 
 --
--- Name: match_id_seq; Type: SEQUENCE SET; Schema: public; Owner: morgaface
+-- Name: match_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('match_id_seq', 4, true);
+SELECT pg_catalog.setval('match_id_seq', 6, true);
 
 
 --
--- Data for Name: owners; Type: TABLE DATA; Schema: public; Owner: morgaface
+-- Data for Name: owners; Type: TABLE DATA; Schema: public; Owner: Guest
 --
 
 COPY owners (id, owner_name, email, profile_pic) FROM stdin;
@@ -343,18 +390,32 @@ COPY owners (id, owner_name, email, profile_pic) FROM stdin;
 6	Maggie 2	jlkajdflkaj	nowhere
 7	Maggie6	ilikebugs@maggie.com	nowhere
 8	Maggie3	jlkajdflkaj	kjljakldjfa
+9	Jake	jake@fake.com	http://i.imgur.com/YE14ZcB.jpg
+10	Ariel	ariel@faker.com	http://i.imgur.com/36xL1Mm.jpg
+11	Ariel	ariel@fake.com	http://i.imgur.com/36xL1Mm.jpg
+12	Kallen	Kallen@faker.com	http://i.imgur.com/rCGi2SZ.jpg
+13	Fredrick	fredrick@faker.com	http://i.imgur.com/45UDfuf.jpg
+14	Ryback	Ryback_sucks@gmail.com	http://i.imgur.com/wpkta0j.png
+15	Stephen King	Stephen.king@gmail.com	http://i.imgur.com/ZMgwknR.jpg
+16	Joe	joe@gmai.com 	http://i.imgur.com/iNNqzE2.png
+17	Tim Burton	Spooks@creeps.com	http://i.imgur.com/G72naDZ.jpg
+18	Shaggy	Shaggy@mysteryinc.com	http://i.imgur.com/FdO4Mxa.jpg
+19	Michael Phelps	swim@water.com	http://i.imgur.com/vYWcLSY.jpg
+20	Donald Trump	politics@joke.com	http://i.imgur.com/AziwZT1.jpg
+21	Morgan	morgan@morgan.com	http://www.roytanck.com/wp-content/uploads/2010/08/avatar-150x150.png
+22	Travis	travis@toggleable.com	http://lzmarieauthor.com/wp-content/uploads/2013/03/african-lion-male_436_600x450-150x150.jpg
 \.
 
 
 --
--- Name: owners_id_seq; Type: SEQUENCE SET; Schema: public; Owner: morgaface
+-- Name: owners_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('owners_id_seq', 8, true);
+SELECT pg_catalog.setval('owners_id_seq', 22, true);
 
 
 --
--- Name: dogs_interests_pkey; Type: CONSTRAINT; Schema: public; Owner: morgaface; Tablespace: 
+-- Name: dogs_interests_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
 --
 
 ALTER TABLE ONLY dogs_interests
@@ -362,7 +423,7 @@ ALTER TABLE ONLY dogs_interests
 
 
 --
--- Name: dogs_pkey; Type: CONSTRAINT; Schema: public; Owner: morgaface; Tablespace: 
+-- Name: dogs_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
 --
 
 ALTER TABLE ONLY dogs
@@ -370,7 +431,7 @@ ALTER TABLE ONLY dogs
 
 
 --
--- Name: interests_pkey; Type: CONSTRAINT; Schema: public; Owner: morgaface; Tablespace: 
+-- Name: interests_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
 --
 
 ALTER TABLE ONLY interests
@@ -378,7 +439,7 @@ ALTER TABLE ONLY interests
 
 
 --
--- Name: match_pkey; Type: CONSTRAINT; Schema: public; Owner: morgaface; Tablespace: 
+-- Name: match_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
 --
 
 ALTER TABLE ONLY match
@@ -386,7 +447,7 @@ ALTER TABLE ONLY match
 
 
 --
--- Name: owners_pkey; Type: CONSTRAINT; Schema: public; Owner: morgaface; Tablespace: 
+-- Name: owners_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
 --
 
 ALTER TABLE ONLY owners
@@ -394,12 +455,12 @@ ALTER TABLE ONLY owners
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: morgaface
+-- Name: public; Type: ACL; Schema: -; Owner: epicodus
 --
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM morgaface;
-GRANT ALL ON SCHEMA public TO morgaface;
+REVOKE ALL ON SCHEMA public FROM epicodus;
+GRANT ALL ON SCHEMA public TO epicodus;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
