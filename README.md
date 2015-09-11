@@ -47,29 +47,14 @@ $ gradle run
 * Java
 * Spark
 * SQL
-<<<<<<< HEAD
-* Testing with JUnit, FluentLenium, and Gradle
-<<<<<<< HEAD
-
-### Legal
-
-Copyright (c) 2015 Morgan Lutz, Yvonne Peng, Jocilyn Alsdorf, Teresa Fletcher
-=======
-* bootstrap
-
-### Legal
-
-Copyright (c) 2015 Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, Teresa Fletcher
->>>>>>> 75c9480ed1dd93c8805dff5ef1100d7852eae91c
-=======
 * Bootsrap
 * Apache Velocity
 * Testing with JUnit, FluentLenium, and Gradle
 
+
 ### Legal
 
 Copyright (c) 2015 Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, & Teresa Fletcher
->>>>>>> d56e8f3f536e00123441d7a94b98a9122491cc05
 
 This software is licensed under the MIT license.
 
