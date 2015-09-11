@@ -26,6 +26,7 @@
         <li>$interest.getName()</li>
         #end
        </ul>
+       #if($dogId == $dog.getId())
       <h3>Current Connections:</h3>
       <ul>
         #foreach($dog in $dog.getMatches())
@@ -34,7 +35,6 @@
       </ul>
         <br>
         <br>
-        #if($dogId == $dog.getId())
         <a href="/update/$dog.getId()" class="btn btn-primary btn-block">Update Your Profile</a>
         #end
       </div>
