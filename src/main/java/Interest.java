@@ -58,7 +58,7 @@ import org.sql2o.*;
 
     public void update(String name) {
       try(Connection con = DB.sql2o.open()) {
-        String sql = "UPDATE interests SET name=:name";
+        String sql = "UPDATE interests SET name=:name WHERE id=:id";
         con.createQuery(sql)
           .addParameter("name", name)
           .addParameter("id", id)

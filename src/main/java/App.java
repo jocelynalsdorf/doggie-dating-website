@@ -16,13 +16,23 @@ public class App {
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
+      get("/profile", (request, response) -> {
+        response.redirect("/profile/" + dogId);
+        return null;
+      });
+
       get("/profile/0", (request, response) -> {
-        response.redirect("/new-account");
+        response.redirect("/login");
         return null;
       });
 
       get("/update", (request, response) -> {
         response.redirect("/update/" + dogId);
+        return null;
+      });
+
+      get("/update/0", (request, response) -> {
+        response.redirect("/login");
         return null;
       });
 
@@ -40,6 +50,14 @@ public class App {
         dogId = myDog.getId();
         request.session().attribute("dogID", myDog.getId());
         response.redirect("/profile/" +myDog.getId());
+        return null;
+      });
+
+      get("/logout", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        request.session().removeAttribute("dogId");
+        dogId = 0;
+        response.redirect("/");
         return null;
       });
 
@@ -65,7 +83,6 @@ public class App {
         String dogPW = request.queryParams("password");
         Dog newDog = new Dog(dogName, dogSum, dogPic, newOwner.getId(), dogPW);
         newDog.save();
-        dogId = newDog.getId();
         //get interests
         int interestOne = Integer.parseInt(request.queryParams("group1"));
         int interestTwo = Integer.parseInt(request.queryParams("group2"));
@@ -75,7 +92,7 @@ public class App {
         newDog.addInterest(interestThree);
 
         request.session().attribute("dogId", newDog.getId());
-
+        dogId = newDog.getId();
         response.redirect("/profile/" +newDog.getId());
         return null;
       });

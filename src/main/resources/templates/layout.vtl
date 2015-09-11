@@ -35,7 +35,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More Options <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/new-account">New Account</a></li>
-            <li><a href="/profile/$dogId">Profile</a></li>
+            <li><a href="/profile">Profile</a></li>
             <li><a href="/update">Edit</a></li>
             <li class="divider"></li>
             <li><a href="/featured">See Success Stories</a></li>
@@ -43,9 +43,15 @@
           </ul>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/login">Log In</a></li>
-      </ul>
+      #if($dogId)
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/logout">Log Out</a></li>
+        </ul>
+      #else
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/login">Log In</a></li>
+        </ul>
+      #end
     </div>
   </div>
 </nav>
