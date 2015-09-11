@@ -1,6 +1,6 @@
 # Doggie Dating Website
 
-<<<<<<< HEAD
+
 ##### Create a dating profile for your dog, September 11, 2015
 
 #### By Morgan Lutz, Yvonne Peng, Jocilyn Alsdorf, Teresa Fletcher
@@ -8,7 +8,13 @@
 ##### Create a dating profile for your dog to meet new friends, September 11, 2015
 
 #### By Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, Teresa Fletcher
->>>>>>> 75c9480ed1dd93c8805dff5ef1100d7852eae91c
+
+=======
+
+##### Create a dating profile for your dog, September 11, 2015
+
+#### By Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, & Teresa Fletcher
+
 
 ## Description
 
@@ -17,6 +23,11 @@
 
 ## Database Design
 ![Database image](https://raw.githubusercontent.com/morganlutz/doggie-dating-website/master/src/main/resources/public/img/SQL-ScreenShot-2015-09-10.png)
+
+=======
+
+## Site home screenshot
+
 ![Screenshot of site] (https://raw.githubusercontent.com/morganlutz/doggie-dating-website/master/src/main/resources/public/img/readme_scrennshot.png)
 ## Setup
 
@@ -26,21 +37,27 @@ $ cd ~/Desktop
 $ git clone https://github.com/morganlutz/doggie-dating-website.git
 $ cd doggie-dating-website/
 ```
-<<<<<<< HEAD
-Open a second tab in terminal. Run postgres. Open a third tab. Run psql. In psql, create your database 'doggie-dating'.
 =======
+
 Open a second tab in terminal. Run postgres. Open a third tab. Run psql. In psql, create your database 'doggie_dating'.
->>>>>>> 75c9480ed1dd93c8805dff5ef1100d7852eae91c
+
+
 ```
 $USER=# CREATE DATABASE doggie-dating;
 ```
 Switch back to bash (first tab) to populate your database:
 ```
 <<<<<<< HEAD
+<<<<<<< HEAD
 $ psql doggie-dating < doggie-dating.sql
 =======
 $ psql doggie_dating < doggie_dating.sql
 >>>>>>> 75c9480ed1dd93c8805dff5ef1100d7852eae91c
+=======
+$ psql doggie_dating < doggie_dating.sql
+```
+$ psql doggie_dating < doggie_dating.sql
+>>>>>>> d56e8f3f536e00123441d7a94b98a9122491cc05
 ```
 Run gradle to start the program:
 ```
@@ -51,6 +68,7 @@ $ gradle run
 * Java
 * Spark
 * SQL
+<<<<<<< HEAD
 * Testing with JUnit, FluentLenium, and Gradle
 <<<<<<< HEAD
 
@@ -64,6 +82,15 @@ Copyright (c) 2015 Morgan Lutz, Yvonne Peng, Jocilyn Alsdorf, Teresa Fletcher
 
 Copyright (c) 2015 Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, Teresa Fletcher
 >>>>>>> 75c9480ed1dd93c8805dff5ef1100d7852eae91c
+=======
+* Bootsrap
+* Apache Velocity
+* Testing with JUnit, FluentLenium, and Gradle
+
+### Legal
+
+Copyright (c) 2015 Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, & Teresa Fletcher
+>>>>>>> d56e8f3f536e00123441d7a94b98a9122491cc05
 
 This software is licensed under the MIT license.
 
