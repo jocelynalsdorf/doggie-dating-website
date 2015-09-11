@@ -120,10 +120,9 @@ public class App {
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
-
       get("/dogs/:id/delete", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
-        int dog_id = Integer.parseInt(request.queryParams("id"));
+        int dog_id = Integer.parseInt(request.params("id"));
         Dog myDog = Dog.find(dog_id);
         myDog.delete();
         response.redirect("/");

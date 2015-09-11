@@ -47,7 +47,7 @@
       <div class="form-group">
         <label for="owner_pic" class="col-lg-2 control-label"><h5>Owner Pic URL:</h5></label>
         <div class="col-lg-10">
-          <input id="owner_pic" type="text" name="owner_pic" class="form-control" placeholder="http://www.nameofurl.com" owner="$owner.getProfilePic()" required>
+          <input id="owner_pic" type="text" name="owner_pic" class="form-control" placeholder="http://www.nameofurl.com" value="$owner.getProfilePic()" required>
         </div>
       </div>
 
@@ -83,7 +83,7 @@
     <div class="form-group">
     <label for="select3" class="col-lg-2 control-label"><h5>Select Interest 3</h5></label>
     <div class="col-lg-10">
-      <select class="form-control" id="select3" name="group2">
+      <select class="form-control" id="select3" name="group3">
         <option value="$dog.getInterest().get(2).getId()">$dog.getInterest().get(2).getName()</option>
         <option value="1">Swimming</option>
         <option value="2">Eating</option>
