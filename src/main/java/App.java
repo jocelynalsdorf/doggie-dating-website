@@ -76,6 +76,17 @@ public class App {
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
+      get("/profile/:id/connect/:friend_id", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        int dog_id = Integer.parseInt(request.params("id"));
+        int friend_id = Integer.parseInt(request.params("friend_id"));
+        Dog myDog = Dog.find(dog_id);
+        myDog.setMatches(friend_id);
+        myDog.setILike(friend_id);
+        response.redirect("/profile/" + friend_id);
+        return null;
+      });
+
       get("/all-dogs", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
         model.put("template", "templates/all-dogs.vtl");
