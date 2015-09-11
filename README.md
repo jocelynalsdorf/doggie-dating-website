@@ -1,6 +1,6 @@
 # Doggie Dating Website
 
-##### Create a dating profile for your dog, September 11, 2015
+##### Create a dating profile for your dog to meet new friends, September 11, 2015
 
 #### By Morgan Lutz, Yvonne Peng, Jocilyn Alsdorf, Teresa Fletcher
 
@@ -20,13 +20,13 @@ $ cd ~/Desktop
 $ git clone https://github.com/morganlutz/doggie-dating-website.git
 $ cd doggie-dating-website/
 ```
-Open a second tab in terminal. Run postgres. Open a third tab. Run psql. In psql, create your database 'doggie-dating'.
+Open a second tab in terminal. Run postgres. Open a third tab. Run psql. In psql, create your database 'doggie_dating'.
 ```
 $USER=# CREATE DATABASE doggie-dating;
 ```
 Switch back to bash (first tab) to populate your database:
 ```
-$ psql doggie-dating < doggie-dating.sql
+$ psql doggie_dating < doggie_dating.sql
 ```
 Run gradle to start the program:
 ```
@@ -38,6 +38,7 @@ $ gradle run
 * Spark
 * SQL
 * Testing with JUnit, FluentLenium, and Gradle
+* bootstrap
 
 ### Legal
 
