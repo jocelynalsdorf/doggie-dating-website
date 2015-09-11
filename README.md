@@ -35,17 +35,8 @@ $USER=# CREATE DATABASE doggie-dating;
 ```
 Switch back to bash (first tab) to populate your database:
 ```
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 $ psql doggie-dating < doggie-dating.sql
-=======
-$ psql doggie_dating < doggie_dating.sql
->>>>>>> 75c9480ed1dd93c8805dff5ef1100d7852eae91c
-=======
-$ psql doggie_dating < doggie_dating.sql
-```
-$ psql doggie_dating < doggie_dating.sql
->>>>>>> d56e8f3f536e00123441d7a94b98a9122491cc05
 ```
 Run gradle to start the program:
 ```
