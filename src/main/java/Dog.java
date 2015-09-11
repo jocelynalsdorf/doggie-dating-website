@@ -141,9 +141,11 @@ public class Dog {
 
   public void addInterest(int interest_id) {
   try(Connection con = DB.sql2o.open()) {
-    String sql = "INSERT INTO dogs_interests (dog_id, interest_id) VALUES (:dog_id, :interest_id)";
+    String sql = "INSERT INTO dogs_interests (dog_id, interest_id) "+
+    "SELECT :dog_id, :interest_id WHERE NOT EXISTS (SELECT dog_id, interest_id "+
+    "FROM dogs_interests WHERE dog_id=:dog_id AND interest_id=:interest_id)";
     con.createQuery(sql)
-      .addParameter("dog_id", id)
+      .addParameter("dog_id", this.getId())
       .addParameter("interest_id", interest_id)
       .executeUpdate();
     }
