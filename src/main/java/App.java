@@ -5,6 +5,7 @@ import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
 
 public class App {
+  private static int dogId = 0;
   public static void main(String[] args) {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
@@ -14,6 +15,26 @@ public class App {
         model.put("template", "templates/home.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
+
+      get("/profile", (request, response) -> {
+        response.redirect("/profile/" + dogId);
+        return null;
+      });
+
+      get("/profile/0", (request, response) -> {
+        response.redirect("/login");
+        return null;
+      });
+
+      get("/update", (request, response) -> {
+        response.redirect("/update/" + dogId);
+        return null;
+      });
+
+      get("/update/0", (request, response) -> {
+        response.redirect("/login");
+        return null;
+      });
 
       get("/login", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
@@ -26,8 +47,8 @@ public class App {
         String name = request.queryParams("name");
         String password = request.queryParams("password");
         Dog myDog = Dog.getDog(name, password);
-        request.session().attribute("dogId", myDog.getId());
-
+        dogId = myDog.getId();
+        request.session().attribute("dogID", myDog.getId());
         response.redirect("/profile/" +myDog.getId());
         return null;
       });
@@ -35,7 +56,7 @@ public class App {
       get("/logout", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
         request.session().removeAttribute("dogId");
-
+        dogId = 0;
         response.redirect("/");
         return null;
       });
@@ -45,7 +66,6 @@ public class App {
         model.put("template", "templates/new-account.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
-
 
       post("/new-account", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
@@ -63,7 +83,6 @@ public class App {
         String dogPW = request.queryParams("password");
         Dog newDog = new Dog(dogName, dogSum, dogPic, newOwner.getId(), dogPW);
         newDog.save();
-
         //get interests
         int interestOne = Integer.parseInt(request.queryParams("group1"));
         int interestTwo = Integer.parseInt(request.queryParams("group2"));
@@ -73,7 +92,7 @@ public class App {
         newDog.addInterest(interestThree);
 
         request.session().attribute("dogId", newDog.getId());
-
+        dogId = newDog.getId();
         response.redirect("/profile/" +newDog.getId());
         return null;
       });
@@ -83,7 +102,7 @@ public class App {
         HashMap<String, Object> model = new HashMap<String, Object>();
         int dog_id = Integer.parseInt(request.params("id"));
         Dog myDog = Dog.find(dog_id);
-        model.put("dogId", request.session().attribute("dogId"));
+        model.put("dogId", dogId);
         model.put("owner", myDog.getOwner());
         model.put("dog", myDog);
         model.put("template", "templates/profile.vtl");
@@ -97,32 +116,32 @@ public class App {
         Dog myDog = Dog.find(dog_id);
         myDog.setMatches(friend_id);
         myDog.setILike(friend_id);
-        response.redirect("/profile/" + friend_id);
+        response.redirect("/profile/" + dogId);
         return null;
       });
 
       get("/all-dogs", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
         model.put("template", "templates/all-dogs.vtl");
-        model.put("dogId", request.session().attribute("dogId"));
+        model.put("dogId", dogId);
         model.put("dogs", Dog.all());
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
-      get("/update", (request, response) -> {
+      get("/update/:id", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
-        model.put("dogId", request.session().attribute("dogId"));
-        int dog_id = request.session().attribute("dogId");
+        int dog_id = Integer.parseInt(request.params("id"));
         Dog myDog = Dog.find(dog_id);
         model.put("owner", myDog.getOwner());
+        model.put("dogId", dogId);
         model.put("dog", myDog);
         model.put("template", "templates/edit-profile.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
-      post("/update", (request, response) -> {
+      post("/update/:id", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
-        int dog_id = request.session().attribute("dogId");
+        int dog_id = Integer.parseInt(request.params("id"));
         Dog myDog = Dog.find(dog_id);
         Owner myOwner = myDog.getOwner();
 
@@ -147,6 +166,7 @@ public class App {
 
         model.put("owner", myDog.getOwner());
         model.put("dog", myDog);
+        model.put("dogId", dogId);
         response.redirect("/profile/" + dog_id);
         return null;
       });
