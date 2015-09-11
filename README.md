@@ -2,7 +2,7 @@
 
 ##### Create a dating profile for your dog to meet new friends, September 11, 2015
 
-#### By Morgan Lutz, Yvonne Peng, Jocilyn Alsdorf, Teresa Fletcher
+#### By Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, Teresa Fletcher
 
 ## Description
 
@@ -42,7 +42,7 @@ $ gradle run
 
 ### Legal
 
-Copyright (c) 2015 Morgan Lutz, Yvonne Peng, Jocilyn Alsdorf, Teresa Fletcher
+Copyright (c) 2015 Morgan Lutz, Yvonne Peng, Jocelyn Alsdorf, Teresa Fletcher
 
 This software is licensed under the MIT license.
 
