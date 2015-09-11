@@ -72,12 +72,47 @@ public class App {
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
-      get("/edit", (request, response) -> {
+      get("/update", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
+        model.put("dogId", request.session().attribute("dogId"));
+        int dog_id = request.session().attribute("dogId");
+        Dog myDog = Dog.find(dog_id);
+        model.put("owner", myDog.getOwner());
+        model.put("dog", myDog);
         model.put("template", "templates/edit-profile.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
+      post("/update", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        int dog_id = request.session().attribute("dogId");
+        Dog myDog = Dog.find(dog_id);
+        Owner myOwner = myDog.getOwner();
+
+        String name = request.queryParams("ownername");
+        String contact = request.queryParams("ownercontact");
+        String ownPic = request.queryParams("owner_pic");
+        myOwner.update(name, contact, ownPic);
+
+        //new Dog
+        String dogName = request.queryParams("doggyname");
+        String dogSum = request.queryParams("summary");
+        String dogPic = request.queryParams("dog_pic");
+        myDog.update(name, dogPic, dogSum, myOwner.getId());
+
+        //get interests
+        int interestOne = Integer.parseInt(request.queryParams("group1"));
+        int interestTwo = Integer.parseInt(request.queryParams("group2"));
+        int interestThree = Integer.parseInt(request.queryParams("group3"));
+        myDog.addInterest(interestOne);
+        myDog.addInterest(interestTwo);
+        myDog.addInterest(interestThree);
+
+        model.put("owner", myDog.getOwner());
+        model.put("dog", myDog);
+        response.redirect("/profile/" + dog_id);
+        return null;
+      });
 
       get("/featured", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
@@ -86,17 +121,14 @@ public class App {
       }, new VelocityTemplateEngine());
 
 
-
-
-
-      // may need to use post
-    //   get("/dogs/:id/delete", (request, response) -> {
-    //     HashMap<String, Object> model = new HashMap<String, Object>();
-    //     int dog_id = Integer.parseInt(request.queryParams("id"));
-    //     Dog myDog = Dog.find(dog_id);
-    //     myDog.delete();
-    //     response.redirect("/");
-    //   return null;
+      get("/dogs/:id/delete", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        int dog_id = Integer.parseInt(request.queryParams("id"));
+        Dog myDog = Dog.find(dog_id);
+        myDog.delete();
+        response.redirect("/");
+        return null;
+      });
 
   }// end of main
 }//end of App

@@ -81,7 +81,7 @@ public class Dog {
     }
   }
 
-  public void update(String name) {
+  public void update(String name, String profile_pic, String summary, int owner_id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE dogs SET name =:name, profile_pic =:profile_pic, summary =:summary, owner_id = :owner_id WHERE id = :id";
       con.createQuery(sql)

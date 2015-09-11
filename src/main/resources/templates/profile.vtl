@@ -5,9 +5,7 @@
         <button type="submit" class="btn btn-primary profile-btn center-block">Connect With Me!</button>
       </form>
 
-      <!--<form action="/get-score/$dog.getId()" method="post"> -->
-          <button type="submit" data-toggle="modal" data-target="#scoreModal" class="btn btn-primary profile-btn center-block">Get Score!</button>
-    <!--  </form> -->
+      <button type="submit" data-toggle="modal" data-target="#scoreModal" class="btn btn-primary profile-btn center-block">Get Score!</button>
     </div>
     <hr>
     <div id="owner"><img src="http://placehold.it/100x100" alt="Owner" class="img-responsive center-block">
@@ -39,10 +37,9 @@
       </ul>
         <br>
         <br>
-        <form action="/update" method="post">
-          <button type="submit" class="btn btn-primary btn-block">Update Your Profile</button>
-        </form>
-
+        #if($dogId == $dog.getId())
+        <a href="/update"><button type="submit" class="btn btn-primary btn-block">Update Your Profile</button></a>
+        #end
       </div>
       <div class="dog-info col-md-2"></div>
   </div>
