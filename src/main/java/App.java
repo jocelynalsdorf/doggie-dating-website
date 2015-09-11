@@ -25,13 +25,13 @@ public class App {
 
       get("/update/$dogId", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-        halt(403, "Please log in or create an account!");
+      response.redirect("/login");
         return null;
       });
 
       get("/profile/$dogId", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-        halt(403, "Please log in or create an account!");
+      response.redirect("/login");
         return null;
       });
 
@@ -134,6 +134,7 @@ public class App {
 
       get("/all-dogs", (request, response) -> {
         HashMap<String, Object> model = new HashMap<String, Object>();
+
         model.put("template", "templates/all-dogs.vtl");
         model.put("dogId", request.session().attribute("dogId"));
         model.put("dogs", Dog.all());

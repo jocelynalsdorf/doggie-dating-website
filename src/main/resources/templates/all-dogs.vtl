@@ -18,11 +18,16 @@
 
                   <p class="details">Details: $dog.getSummary()</p>
                   <p align="center">
-                    <a href="/profile/$dog.getId()" class="btn btn-primary btn-block" data-toggle="modal">View More info on $dog.getName()</a>
+                    #if($dogId)
+                      <a href="/profile/$dog.getId()" class="btn btn-primary btn-block" data-toggle="modal">View More info on $dog.getName()</a>
+                    #else
+                      <a href="/login" class="btn btn-primary btn-block" data-toggle="modal">Log in to see $dog.getName()'s info</a>
+                    #end
                   </p>
                 </div>
               </div>
             </li>
+
 
 
           </ul>
