@@ -8,7 +8,7 @@
       #end
     </div>
     <hr>
-    <div id="owner"><img src="http://loremflickr.com/150/150/dog" alt="Owner" class="img-responsive center-block">
+    <div id="owner"><img src=$owner.getProfilePic() alt="Owner" class="img-responsive center-block">
       <button type="submit" data-toggle="modal" data-target="#profileModal"class="btn btn-primary profile-btn center-block">Contact $owner.getOwnerName()</button>
     </div>
   </div>

@@ -11,12 +11,12 @@
 
             <li class="col-md-4">
               <div class="thumbnail">
-                <img src=$dog.getProfile_pic() alt="ALT NAME">
+                <img src=$dog.getProfilePic() alt="ALT NAME">
                 <div class="caption">
-                  <h3>Title</h3>
-                  <p>Name: $dog.getName()</p>
+                  <h3>$dog.getName()</h3>
                   <p>Email: $dog.getOwner().getEmail()</p>
-                  <p>Details: $dog.getSummary()</p>
+
+                  <p class="details">Details: $dog.getSummary()</p>
                   <p align="center">
                     <a href="/profile/$dog.getId()" class="btn btn-primary btn-block" data-toggle="modal">View More info on $dog.getName()</a>
                   </p>
