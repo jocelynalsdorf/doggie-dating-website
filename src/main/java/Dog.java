@@ -71,12 +71,13 @@ public class Dog {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO dogs (name, profile_pic, summary, owner_id) VALUES (:name, :profile_pic, :summary, :owner_id)";
+      String sql = "INSERT INTO dogs (name, profile_pic, summary, owner_id, password) VALUES (:name, :profile_pic, :summary, :owner_id, :password)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
         .addParameter("profile_pic", this.profile_pic)
         .addParameter("summary", this.summary)
         .addParameter("owner_id", this.owner_id)
+        .addParameter("password", this.password)
         .executeUpdate()
         .getKey();
     }
@@ -175,10 +176,12 @@ public void deleteInterest() {
 }
 
    public void setMatches(int dog_friend_id){
-     String sql = "INSERT INTO match (dog_id, dog_friend_id) VALUES (:id, :dog_friend_id)";
+     String sql = "INSERT INTO match (dog_id, dog_friend_id) "+
+     "SELECT :dog_id, :dog_friend_id WHERE NOT EXISTS (SELECT dog_id, dog_friend_id "+
+     "FROM match WHERE dog_id=:dog_id AND dog_friend_id=:dog_friend_id)";
      try (Connection con = DB.sql2o.open()){
        con.createQuery(sql)
-        .addParameter("id", this.getId())
+        .addParameter("dog_id", this.getId())
         .addParameter("dog_friend_id", dog_friend_id)
         .executeUpdate();
      }
