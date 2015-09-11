@@ -4,10 +4,10 @@
       <form action="/connect/$dog.getId()" method="post">
         <button type="submit" class="btn btn-primary profile-btn center-block">Connect With Me!</button>
       </form>
-      
-      <form action="/get-score/$dog.getId()" method="post">
+
+      <!--<form action="/get-score/$dog.getId()" method="post"> -->
           <button type="submit" data-toggle="modal" data-target="#scoreModal" class="btn btn-primary profile-btn center-block">Get Score!</button>
-      </form>
+    <!--  </form> -->
     </div>
     <hr>
     <div id="owner"><img src="http://placehold.it/100x100" alt="Owner" class="img-responsive center-block">
@@ -53,7 +53,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-        <h4 class="modal-title">Here is the connect score for you and $dog.getName(): <span class="title-span">$dog.getScore()</span></h4>
+        <h4 class="modal-title">Here is the connect score for you and $dog.getName(): <span class="title-span">$dog.getScore($dogId)</span></h4>
       </div>
       <div class="modal-body">
         <p>$owner.getEmail()
