@@ -175,3 +175,11 @@ a.navbar-brand {
 .bottom-features {
  margin-bottom: 30px;
 }
+
+.carousel-caption{
+  padding-top:0px;
+  padding-left:0px;
+  padding-left:0px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
