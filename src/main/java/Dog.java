@@ -132,8 +132,12 @@ public class Dog {
       con.createQuery(sql)
         .addParameter("id", id)
         .executeUpdate();
-      String joinsql = "DELETE FROM dogs_interests where dog_id=:id";
-      con.createQuery(joinsql)
+      String intsql = "DELETE FROM dogs_interests where dog_id=:id";
+      con.createQuery(intsql)
+        .addParameter("id", id)
+        .executeUpdate();
+      String matchsql = "DELETE FROM match where dog_id=:id AND dog_friend_id = :id";
+      con.createQuery(matchsql)
         .addParameter("id", id)
         .executeUpdate();
     }
@@ -158,6 +162,15 @@ public class Dog {
       .addParameter("id", id)
       .executeAndFetch(Interest.class);
     return myInterests;
+  }
+}
+
+public void deleteInterest() {
+  String intsql = "DELETE FROM dogs_interests where dog_id=:id";
+  try(Connection con = DB.sql2o.open()){
+    con.createQuery(intsql)
+    .addParameter("id", id)
+    .executeUpdate();
   }
 }
 
@@ -215,16 +228,24 @@ public class Dog {
 
 
    public List<Dog> getMatches(){
-     String sql = "SELECT dogs.* FROM match JOIN dogs ON (dogs.id = match.dog_friend_id) WHERE match.dog_id =:id AND match.i_like = true";
+     String sql = "SELECT dogs.* FROM match JOIN dogs ON (dogs.id = match.dog_friend_id) WHERE match.dog_id =:id OR match.dog_friend_id=:id2 AND match.i_like = true";
      try(Connection con = DB.sql2o.open()){
        List<Dog> dogs = con.createQuery(sql)
-        .addParameter("id", id)
+        .addParameter("id", this.getId())
+        .addParameter("id2", this.getId())
         .executeAndFetch(Dog.class);
       return dogs;
      }
    }
 
-
+   public void deleteMatch() {
+     String intsql = "DELETE FROM match where dog_id=:id AND dog_friend_id = :id";
+     try(Connection con = DB.sql2o.open()){
+       con.createQuery(intsql)
+       .addParameter("id", id)
+       .executeUpdate();
+    }
+   }
 
 
 
