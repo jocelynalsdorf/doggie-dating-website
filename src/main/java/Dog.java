@@ -250,6 +250,15 @@ public void deleteInterest() {
     }
    }
 
+   public void deleteInterests() {
+     try(Connection con = DB.sql2o.open()) {
+       String deleteQuery = "DELETE FROM dogs_interests WHERE dog_id=:dog_id";
+         con.createQuery(deleteQuery)
+           .addParameter("dog_id", this.getId())
+           .executeUpdate();
+     }
+   }
+
 
 
   }//end of class
