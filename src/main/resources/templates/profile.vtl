@@ -47,12 +47,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-        <h4 class="modal-title">Here is the connect score for you and $dog.getName(): <span class="title-span">$dog.getScore($dogId)</span></h4>
+        <h4 class="modal-title">Here are your match results!</h4>
       </div>
       <div class="modal-body">
-        <p>$owner.getEmail()
-
-        </p>
+        #if($score == 3)
+          <p>Congratulations! You're a perfect match!</p>
+        #elseif($score == 2)
+          <p>Looks like you'd be good friends! You have some common interests.</p>
+        #else
+          <p>Maybe you should try another dog...</p>
+        #end
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

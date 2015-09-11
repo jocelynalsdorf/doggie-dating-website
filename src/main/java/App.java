@@ -105,6 +105,8 @@ public class App {
         //   halt(response.redirect("/", 301) = 301);
         // };
         Dog myDog = Dog.find(dog_id);
+        //int score = myDog.getScore(request.session().attribute("dogId"));
+        model.put("score", myDog.getScore(request.session().attribute("dogId")));
         model.put("dogId", request.session().attribute("dogId"));
         model.put("owner", myDog.getOwner());
         model.put("dog", myDog);
